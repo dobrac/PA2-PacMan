@@ -43,8 +43,11 @@ doc:
 ## Spuštění `depend`
 .PHONY: depend
 depend:
-	$(RM) ./.depend
+	$(RM) .depend
 	$(CXX) $(CPPFLAGS) -MM $(SOURCE_FILES)>>./.depend;
+
+.depend:
+	touch .depend
 
 ## Odstranění vygenerovatelných souborů
 .PHONY: clean

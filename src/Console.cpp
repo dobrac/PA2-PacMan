@@ -78,9 +78,12 @@ Console::ARROW Console::getArrow() const {
 Console::MENU Console::getMenu() const {
     int key = PressAnyKey();
     switch (key) {
-        case (START):
+        case (START_B):
             printKey(key);
-            return START;
+            return START_B;
+        case (START_M):
+            printKey(key);
+            return START_M;
         case (EXIT):
             printKey(key);
             return EXIT;

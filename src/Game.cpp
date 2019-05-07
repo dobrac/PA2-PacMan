@@ -4,6 +4,7 @@
 #include "Entities/Border.h"
 #include "Entities/Point.h"
 #include "File.h"
+#include "Exceptions/ExceptionWrongMapFormat.h"
 
 #include <thread>
 
@@ -15,7 +16,8 @@ Game::Game() {
 
 void Game::showMenu() const {
     printLine("Welcome to PacMan");
-    printLine("1) Start Game ('s')");
+    printLine("1) Start BASIC Game ('s')");
+    printLine("1) Start MEDIUM Game ('m')");
     printLine("2) Exit Game ('e')");
 }
 
@@ -70,10 +72,10 @@ void Game::showGame() {
         }
 
         // Debug arrow queue
-        getMap().getArrowQueue().print();
+        //getMap().getArrowQueue().print();
     }
 
-    if (!getBoard().isEnded()){
+    if (!getBoard().isEnded()) {
         // Move Ghosts
         for (auto &ghost : getBoard().getGhosts()) {
             if (ghost->chase(getMap())) {
@@ -120,9 +122,13 @@ bool Game::runGameLoop() {
 bool Game::runMenuLoop() {
     MENU keyPressed = getMenu();
     switch (keyPressed) {
-        case START:
-            printLine("Starting game...");
-            startGame();
+        case START_B:
+            printLine("Starting BASIC game...");
+            startGame("basic");
+            return false;
+        case START_M:
+            printLine("Starting MEDIUM game...");
+            startGame("medium");
             return false;
         case EXIT:
             printLine("Exiting game...");
@@ -141,8 +147,14 @@ void Game::startMenu() {
     }
 }
 
-void Game::startGame() {
-    m_Board = File::loadBoard("basic");
+void Game::startGame(const std::string & mapName) {
+    try {
+        m_Board = File::loadBoard(mapName);
+    } catch (ExceptionWrongMapFormat &) {
+        printLine("ERROR: Map has wrong format.");
+        startMenu();
+        return;
+    }
 
     while (runGameLoop()) {
         showGame();

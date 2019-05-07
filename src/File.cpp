@@ -2,11 +2,12 @@
 #include "Entities/Border.h"
 #include "Entities/Point.h"
 #include "Entities/Empty.h"
+#include "Exceptions/ExceptionWrongMapFormat.h"
 
 #include <string>
 #include <fstream>
 
-const std::string File::MAPS_LOCATION = "maps/";
+const std::string File::MAPS_LOCATION("maps/");
 
 GameBoard File::loadBoard(const std::string &mapName) {
     std::string line;
@@ -40,14 +41,43 @@ GameBoard File::loadBoard(const std::string &mapName) {
             //Console::printLine(" | " + std::to_string(x));
             y++;
 
-            if (x > xMax)
+            if (x != xMax && xMax != 0) {
+                myfile.close();
+                throw ExceptionWrongMapFormat();
+            } else {
                 xMax = x;
+            }
             board.getMap().setDimensions(xMax, y);
             x = 0;
         }
         myfile.close();
+
+        if (!integrityCheck(board.getMap()))
+            throw ExceptionWrongMapFormat();
     } else {
-        // TODO: ERROR
+        throw ExceptionWrongMapFormat();
     }
     return board;
+}
+
+bool File::integrityCheck(GameMap &map) {
+    for (auto &ent : map.getScreen()) {
+        if (ent->getPos().getX() == 0)
+            if (ent->getType() != Entity::EBorder)
+                return false;
+
+        if (ent->getPos().getY() == 0)
+            if (ent->getType() != Entity::EBorder)
+                return false;
+
+        if (ent->getPos().getX() == map.getX())
+            if (ent->getType() != Entity::EBorder)
+                return false;
+
+        if (ent->getPos().getY() == map.getY())
+            if (ent->getType() != Entity::EBorder)
+                return false;
+    }
+
+    return true;
 }

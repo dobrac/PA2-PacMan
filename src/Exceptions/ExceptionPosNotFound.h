@@ -1,2 +1,2 @@
-class ExceptionPosNotFound {
+class ExceptionPosNotFound : public std::exception {
 };

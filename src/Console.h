@@ -13,7 +13,8 @@ public:
         ARROW_OTHER = 0
     };
     enum MENU {
-        START = 115, // s
+        START_B = 115, // s
+        START_M = 109, // m
         EXIT = 101, // e
         MENU_OTHER = 0
     };

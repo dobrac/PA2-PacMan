@@ -9,4 +9,6 @@ public:
 
 private:
     static const std::string MAPS_LOCATION;
+
+    static bool integrityCheck(GameMap & map);
 };

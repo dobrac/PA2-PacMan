@@ -35,7 +35,7 @@ private:
 
     void startMenu();
 
-    void startGame();
+    void startGame(const std::string & mapName);
 
     void endGame();
 };
