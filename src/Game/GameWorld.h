@@ -2,6 +2,7 @@
 
 #include "../Entities/Players/PacMan.h"
 #include "../Entities/Players/Ghost.h"
+#include "GameMap.h"
 
 class GameWorld : public GameMap {
 public:

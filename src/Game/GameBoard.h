@@ -1,6 +1,8 @@
 #pragma once
 
 #include "GameWorld.h"
+#include "../Modes/Mode.h"
+#include "../Modes/NormalMode.h"
 
 class GameBoard : public GameWorld {
 public:
@@ -16,14 +18,28 @@ public:
     bool checkLoser() const;
 
     int getLives() const;
+    void removeLives(int count);
 
-    bool solveConflicts();
+    std::shared_ptr<Mode> & getGameMode();
+
+    bool update();
+
+    void runInvincibleMode();
+    void resetMode();
+
+    int getTimeChangeMode() const;
 
 private:
+    static const int TIME_INVINCIBLE_MODE = 10;
+
     int m_PointsMax = 0;
     int m_PointsGot = 0;
 
     int m_Lives = 3;
+
+    Timer<Timer_Type_Second> m_TimerMode;
+
+    std::shared_ptr<Mode> m_GameMode = std::make_shared<NormalMode>(NormalMode());
 };
 
 

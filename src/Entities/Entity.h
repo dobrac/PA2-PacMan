@@ -12,7 +12,8 @@ public:
         EBorder,
         EPoint,
         EEmpty,
-        EGhost
+        EGhost,
+        EBonus
     };
 
     Entity(const Pos &pos);

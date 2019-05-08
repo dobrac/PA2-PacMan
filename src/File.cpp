@@ -3,6 +3,7 @@
 #include "Entities/Point.h"
 #include "Entities/Empty.h"
 #include "Exceptions/ExceptionWrongMapFormat.h"
+#include "Entities/Bonus.h"
 
 #include <string>
 #include <fstream>
@@ -28,6 +29,8 @@ GameBoard File::loadBoard(const std::string &mapName) {
                     board.addScreen(std::make_shared<Empty>(Empty({x, y})));
                 } else if (it == '*') {
                     board.addScreen(std::make_shared<Border>(Border({x, y})));
+                } else if (it == '%') {
+                    board.addScreen(std::make_shared<Bonus>(Bonus({x, y})));
                 } else if (it == 'C') {
                     board.setPacMan(PacMan({x, y}));
                     board.addScreen(std::make_shared<Empty>(Empty({x, y})));

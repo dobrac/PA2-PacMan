@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Player.h"
-#include "../../Game/GameMap.h"
+
+class GameBoard;
 
 class PacMan : public Player {
 public:
@@ -9,10 +10,10 @@ public:
 
     /**
      *
-     * @param map Map to move on
+     * @param board Bord to play on
      * @return 0 when pacman is not moving, 1 when pacman has moved, 2 when pacman has moved and got point
      */
-    int move(GameMap &map);
+    int move(GameBoard &board);
 
     std::string print() const override;
 
@@ -20,5 +21,5 @@ public:
 
 private:
 
-    int setMovePos(GameMap &map);
+    int setMovePos(GameBoard &board);
 };

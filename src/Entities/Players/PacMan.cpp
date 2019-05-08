@@ -1,11 +1,14 @@
 #include "PacMan.h"
 #include "../Empty.h"
+#include "../../Game/GameBoard.h"
+
+#include <memory>
 
 PacMan::PacMan(const Pos &pos, int speed) : Player(pos) {
     setSpeed(speed);
 }
 
-int PacMan::move(GameMap &map) {
+int PacMan::move(GameBoard &board) {
     if (!checkTimerMove()) {
         return 0;
     }
@@ -13,20 +16,20 @@ int PacMan::move(GameMap &map) {
     int toReturn;
 
     Pos posVecBack = getVec();
-    if (!map.getArrowQueue().empty()) {
-        setVec(map.getArrowQueue().get());
+    if (!board.getArrowQueue().empty()) {
+        setVec(board.getArrowQueue().get());
 
-        toReturn = setMovePos(map);
+        toReturn = setMovePos(board);
         if (toReturn > 0) {
-            map.getArrowQueue().pop();
+            board.getArrowQueue().pop();
             return toReturn;
         }
     }
 
     setVec(posVecBack);
-    toReturn = setMovePos(map);
+    toReturn = setMovePos(board);
     if (toReturn == 0 || posVecBack == Pos(0, 0)) {
-        map.getArrowQueue().pop();
+        board.getArrowQueue().pop();
         return toReturn;
     }
     return toReturn;
@@ -49,17 +52,20 @@ Entity::EntityType PacMan::getType() const {
     return EPacMan;
 }
 
-int PacMan::setMovePos(GameMap &map) {
-    std::shared_ptr<Entity> ent = map.getScreenAt(getDirection());
+int PacMan::setMovePos(GameBoard &board) {
+    std::shared_ptr<Entity> ent = board.getScreenAt(getDirection());
 
     if (ent->getType() == EEmpty) {
         m_Position = getDirection();
         return 1;
     }
-    if (ent->getType() == EPoint) {
-        map.removeScreenAt(getDirection());
-        map.addScreen(std::make_shared<Empty>(Empty(getDirection())));
+    if (ent->getType() == EPoint || ent->getType() == EBonus) {
+        board.removeScreenAt(getDirection());
+        board.addScreen(std::make_shared<Empty>(Empty(getDirection())));
         m_Position = getDirection();
+        if (ent->getType() == EBonus) {
+            board.runInvincibleMode();
+        }
         return 2;
     }
     return 0;

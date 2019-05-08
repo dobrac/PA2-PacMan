@@ -55,7 +55,9 @@ void Game::showGame() {
         printLine(
                 "Score: " + std::to_string(getBoard().getPoinsGot())
                 + "/" + std::to_string(getBoard().getPointsMax())
-                + " | Lives: " + std::to_string(getBoard().getLives()));
+                + " | Lives: " + std::to_string(getBoard().getLives())
+                + " | Mode: " + getBoard().getGameMode()->print()
+                + " | Mode Change: " + std::to_string(getBoard().getTimeChangeMode()) + "s");
 
         // Print Board
         for (int y = 0; y < getBoard().getY(); y++) {
@@ -83,27 +85,8 @@ void Game::showGame() {
         //getMap().getArrowQueue().print();
     }
 
-    if (!getBoard().isEnded()) {
-        if (getBoard().isStarted()) {
-            // Move Ghosts
-            for (auto &ghost : getBoard().getGhosts()) {
-                if (ghost->chase(getBoard())) {
-                    m_ShouldUpdate = true;
-                }
-            }
-        }
-
-        // Move PacMan
-        int pac = getBoard().getPacMan().move(getBoard());
-        if (pac == 2) {
-            getBoard().addPointsGot(1);
-        }
-        if (pac > 0) {
-            m_ShouldUpdate = true;
-        }
-
-        getBoard().solveConflicts();
-    }
+    if (getBoard().update())
+        m_ShouldUpdate = true;
 }
 
 bool Game::runGameLoop() {
