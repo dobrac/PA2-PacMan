@@ -24,7 +24,13 @@ public:
     int getPoinsGot() const;
 
     bool isEnded() const;
+    bool isStarted() const;
     bool checkWinner() const;
+    bool checkLoser() const;
+
+    int getLives() const;
+
+    bool solveConflicts();
 
 private:
     PacMan m_PacMan = PacMan({0, 0});
@@ -32,6 +38,8 @@ private:
 
     int m_PointsMax = 0;
     int m_PointsGot = 0;
+
+    int m_Lives = 3;
 
     std::vector<std::shared_ptr<Ghost>> m_Ghosts;
 };

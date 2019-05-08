@@ -20,8 +20,12 @@ public:
     bool setSpeed(int speed);
     int getSpeed() const;
 
+    void resetPos();
+
 protected:
     Pos m_Vec = Pos(0, 0);
+
+    Pos m_DefaultPos;
 
     Timer<Timer_Type_Millisecond> m_Timer;
     int m_Speed = 0;

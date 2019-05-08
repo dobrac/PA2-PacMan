@@ -17,8 +17,8 @@ Game::Game() {
 void Game::showMenu() const {
     printLine("Welcome to PacMan");
     printLine("1) Start BASIC Game ('s')");
-    printLine("1) Start MEDIUM Game ('m')");
-    printLine("2) Exit Game ('e')");
+    printLine("2) Start MEDIUM Game ('m')");
+    printLine("3) Exit Game ('e')");
 }
 
 void Game::showGame() {
@@ -53,7 +53,9 @@ void Game::showGame() {
 
         // Print Score
         printLine(
-                "Score: " + std::to_string(getBoard().getPoinsGot()) + "/" + std::to_string(getBoard().getPointsMax()));
+                "Score: " + std::to_string(getBoard().getPoinsGot())
+                + "/" + std::to_string(getBoard().getPointsMax())
+                + " | Lives: " + std::to_string(getBoard().getLives()));
 
         // Print Board
         for (int y = 0; y < getMap().getY(); y++) {
@@ -71,15 +73,23 @@ void Game::showGame() {
             return;
         }
 
+        // Check loser
+        if (getBoard().checkLoser()) {
+            printLine("Loser! Game ended. (Press 'e' to exit.)");
+            return;
+        }
+
         // Debug arrow queue
         //getMap().getArrowQueue().print();
     }
 
     if (!getBoard().isEnded()) {
-        // Move Ghosts
-        for (auto &ghost : getBoard().getGhosts()) {
-            if (ghost->chase(getMap())) {
-                m_ShouldUpdate = true;
+        if (getBoard().isStarted()) {
+            // Move Ghosts
+            for (auto &ghost : getBoard().getGhosts()) {
+                if (ghost->chase(getMap())) {
+                    m_ShouldUpdate = true;
+                }
             }
         }
 
@@ -91,6 +101,8 @@ void Game::showGame() {
         if (pac > 0) {
             m_ShouldUpdate = true;
         }
+
+        getBoard().solveConflicts();
     }
 }
 
@@ -147,7 +159,7 @@ void Game::startMenu() {
     }
 }
 
-void Game::startGame(const std::string & mapName) {
+void Game::startGame(const std::string &mapName) {
     try {
         m_Board = File::loadBoard(mapName);
     } catch (ExceptionWrongMapFormat &) {

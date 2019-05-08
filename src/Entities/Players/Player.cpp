@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const Pos &pos) : Entity(pos) {
+Player::Player(const Pos &pos) : Entity(pos), m_DefaultPos(pos) {
 
 }
 
@@ -16,7 +16,7 @@ Pos Player::getDirection() const {
     return m_Position + m_Vec;
 }
 
-Timer<Timer_Type_Millisecond> & Player::getTimer() {
+Timer<Timer_Type_Millisecond> &Player::getTimer() {
     return m_Timer;
 }
 
@@ -27,4 +27,8 @@ bool Player::setSpeed(int speed) {
 
 int Player::getSpeed() const {
     return m_Speed;
+}
+
+void Player::resetPos() {
+    setPos(m_DefaultPos);
 }

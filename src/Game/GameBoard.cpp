@@ -44,10 +44,37 @@ void GameBoard::initializeGhosts(const Pos &pos) {
     addGhost(std::make_shared<GhostRed>(GhostRed(pos, 50)));
 }
 
+bool GameBoard::isStarted() const {
+    return m_PacMan.getVec() != Pos(0, 0) && !isEnded();
+}
+
 bool GameBoard::isEnded() const {
-    return getPoinsGot() == getPointsMax();
+    return checkWinner() || checkLoser();
 }
 
 bool GameBoard::checkWinner() const {
-    return isEnded();
+    return getPoinsGot() == getPointsMax();
+}
+
+bool GameBoard::checkLoser() const {
+    return m_Lives == 0;
+}
+
+int GameBoard::getLives() const {
+    return m_Lives;
+}
+
+bool GameBoard::solveConflicts() {
+    for (auto &ghost : m_Ghosts) {
+        if (ghost->getPos() == m_PacMan.getPos()) {
+            m_Lives--;
+            m_PacMan.setVec({0, 0});
+            m_PacMan.resetPos();
+            for (auto &ghostRes : m_Ghosts) {
+                ghostRes->resetPos();
+            }
+            return true;
+        }
+    }
+    return false;
 }

@@ -6,7 +6,7 @@ Game.o: src/Game.cpp src/Game.h src/Console.h src/Pos.h \
  src/Entities/Players/../../Timer.h src/Entities/Players/PacMan.h \
  src/Game/GameBoard.h src/Game/../Entities/Players/Ghost.h \
  src/Game/../Entities/Players/Heuristics/Motion.h src/Entities/Border.h \
- src/Entities/Point.h src/File.h
+ src/Entities/Point.h src/File.h src/Exceptions/ExceptionWrongMapFormat.h
 Timer.o: src/Timer.cpp src/Timer.h
 Pos.o: src/Pos.cpp src/Pos.h
 Border.o: src/Entities/Border.cpp src/Entities/Border.h \
@@ -94,7 +94,8 @@ File.o: src/File.cpp src/File.h src/Game/GameBoard.h \
  src/Game/../Entities/Players/../../Timer.h \
  src/Game/../Entities/Players/Ghost.h \
  src/Game/../Entities/Players/Heuristics/Motion.h src/Entities/Border.h \
- src/Entities/Point.h src/Entities/Empty.h
+ src/Entities/Point.h src/Entities/Empty.h \
+ src/Exceptions/ExceptionWrongMapFormat.h
 main.o: src/main.cpp src/Game.h src/Console.h src/Pos.h \
  src/Entities/Entity.h src/Entities/../Game/GameMap.h \
  src/Entities/../Game/../ArrowQueue.h src/Entities/Players/Player.h \
@@ -116,5 +117,4 @@ GameBoard.o: src/Game/GameBoard.cpp src/Game/GameBoard.h \
  src/Game/../Entities/Players/GhostRed.h
 GameMap.o: src/Game/GameMap.cpp src/Game/GameMap.h \
  src/Game/../ArrowQueue.h src/Game/../Pos.h src/Game/../Entities/Entity.h \
- src/Game/../Exceptions/ExceptionPosNotFound.h \
- src/Game/../Entities/Border.h
+ src/Game/../Exceptions/ExceptionPosNotFound.h

@@ -22,7 +22,6 @@ public:
     const std::shared_ptr<Entity> &getScreenAt(const Pos &pos) const;
     void removeScreenAt(const Pos &pos);
 
-
     ArrowQueue &getArrowQueue();
 
 private:

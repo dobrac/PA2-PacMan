@@ -6,3 +6,5 @@ CMakeLists\.txt
 build/
 
 \.idea/
+
+doc/
