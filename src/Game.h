@@ -16,8 +16,6 @@ class Game : public Console {
 public:
     Game();
 
-    GameMap &getMap();
-
     GameBoard &getBoard();
 
 

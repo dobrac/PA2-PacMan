@@ -22,18 +22,18 @@ GameBoard File::loadBoard(const std::string &mapName) {
         while (getline(myfile, line)) {
             for (const char it : line) {
                 if (it == '.') {
-                    board.getMap().addScreen(std::make_shared<Point>(Point({x, y})));
+                    board.addScreen(std::make_shared<Point>(Point({x, y})));
                     board.addPointsMax(1);
                 } else if (it == ' ') {
-                    board.getMap().addScreen(std::make_shared<Empty>(Empty({x, y})));
+                    board.addScreen(std::make_shared<Empty>(Empty({x, y})));
                 } else if (it == '*') {
-                    board.getMap().addScreen(std::make_shared<Border>(Border({x, y})));
+                    board.addScreen(std::make_shared<Border>(Border({x, y})));
                 } else if (it == 'C') {
                     board.setPacMan(PacMan({x, y}));
-                    board.getMap().addScreen(std::make_shared<Empty>(Empty({x, y})));
+                    board.addScreen(std::make_shared<Empty>(Empty({x, y})));
                 } else if (it == 'G') {
                     board.initializeGhosts({x, y});
-                    board.getMap().addScreen(std::make_shared<Empty>(Empty({x, y})));
+                    board.addScreen(std::make_shared<Empty>(Empty({x, y})));
                 }
                 //Console::print(std::string(1, it));
                 x++;
@@ -47,12 +47,12 @@ GameBoard File::loadBoard(const std::string &mapName) {
             } else {
                 xMax = x;
             }
-            board.getMap().setDimensions(xMax, y);
+            board.setDimensions(xMax, y);
             x = 0;
         }
         myfile.close();
 
-        if (!integrityCheck(board.getMap()))
+        if (!integrityCheck(board))
             throw ExceptionWrongMapFormat();
     } else {
         throw ExceptionWrongMapFormat();

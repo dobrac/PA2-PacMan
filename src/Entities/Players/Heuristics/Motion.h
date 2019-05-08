@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../../../Game/GameMap.h"
 #include "../Player.h"
+#include "../PacMan.h"
+#include "../../../Game/GameWorld.h"
 
 class Motion {
 public:
-    virtual bool chase(GameMap &map, Player * ghost) = 0;
+    virtual bool chase(GameWorld &world, Player * ghost) = 0;
 };

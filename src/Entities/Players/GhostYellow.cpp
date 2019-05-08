@@ -12,6 +12,9 @@ std::string GhostYellow::print() const {
     return "Y";
 }
 
-bool GhostYellow::chase(GameMap &map) {
-    return m_MotionBase->chase(map, this);
+bool GhostYellow::chase(GameWorld &world) {
+    if (checkTimerMove())
+        return m_MotionBase->chase(world, this);
+    else
+        return false;
 }

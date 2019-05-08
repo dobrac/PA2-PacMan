@@ -32,3 +32,12 @@ int Player::getSpeed() const {
 void Player::resetPos() {
     setPos(m_DefaultPos);
 }
+
+bool Player::checkTimerMove() {
+    if (getTimer().elapsed() < getSpeed()) {
+        return false;
+    } else {
+        getTimer().reset();
+        return true;
+    }
+}

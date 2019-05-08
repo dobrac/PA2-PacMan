@@ -26,8 +26,8 @@ void Game::showGame() {
         // Clear console
         clear();
 
-        const int mapX = getMap().getX();
-        const int mapY = getMap().getY();
+        const int mapX = getBoard().getX();
+        const int mapY = getBoard().getY();
 
         // Reserve size for screen
         std::vector<std::vector<std::string>> screen;
@@ -39,7 +39,7 @@ void Game::showGame() {
         }
 
         // Show screen entities
-        for (auto &ent : getMap().getScreen()) {
+        for (auto &ent : getBoard().getScreen()) {
             screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print();
         }
 
@@ -58,8 +58,8 @@ void Game::showGame() {
                 + " | Lives: " + std::to_string(getBoard().getLives()));
 
         // Print Board
-        for (int y = 0; y < getMap().getY(); y++) {
-            for (int x = 0; x < getMap().getX(); x++) {
+        for (int y = 0; y < getBoard().getY(); y++) {
+            for (int x = 0; x < getBoard().getX(); x++) {
                 print(screen[x][y]);
             }
             printLine();
@@ -87,14 +87,14 @@ void Game::showGame() {
         if (getBoard().isStarted()) {
             // Move Ghosts
             for (auto &ghost : getBoard().getGhosts()) {
-                if (ghost->chase(getMap())) {
+                if (ghost->chase(getBoard())) {
                     m_ShouldUpdate = true;
                 }
             }
         }
 
         // Move PacMan
-        int pac = getBoard().getPacMan().move(getMap());
+        int pac = getBoard().getPacMan().move(getBoard());
         if (pac == 2) {
             getBoard().addPointsGot(1);
         }
@@ -110,16 +110,16 @@ bool Game::runGameLoop() {
     ARROW keyPressed = getArrow();
     switch (keyPressed) {
         case LEFT:
-            getMap().getArrowQueue().add(Pos(-1, 0));
+            getBoard().getArrowQueue().add(Pos(-1, 0));
             break;
         case RIGHT:
-            getMap().getArrowQueue().add(Pos(1, 0));
+            getBoard().getArrowQueue().add(Pos(1, 0));
             break;
         case UP:
-            getMap().getArrowQueue().add(Pos(0, -1));
+            getBoard().getArrowQueue().add(Pos(0, -1));
             break;
         case DOWN:
-            getMap().getArrowQueue().add(Pos(0, 1));
+            getBoard().getArrowQueue().add(Pos(0, 1));
             break;
         case END:
             endGame();
@@ -176,10 +176,6 @@ void Game::startGame(const std::string &mapName) {
 
 void Game::endGame() {
     printLine("Ending game...");
-}
-
-GameMap &Game::getMap() {
-    return m_Board.getMap();
 }
 
 GameBoard &Game::getBoard() {

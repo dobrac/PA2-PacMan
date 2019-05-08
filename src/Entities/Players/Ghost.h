@@ -1,14 +1,16 @@
 #pragma once
 
 #include "Player.h"
-#include "../../Game/GameMap.h"
-#include "Heuristics/Motion.h"
+#include "PacMan.h"
+
+class GameWorld;
+class Motion;
 
 class Ghost : public Player {
 public:
     Ghost(const Pos &pos, std::shared_ptr<Motion> &&motionBase);
 
-    virtual bool chase(GameMap &map) = 0;
+    virtual bool chase(GameWorld &world) = 0;
 
     EntityType getType() const override;
 

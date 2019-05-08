@@ -6,10 +6,8 @@ PacMan::PacMan(const Pos &pos, int speed) : Player(pos) {
 }
 
 int PacMan::move(GameMap &map) {
-    if (getTimer().elapsed() < getSpeed()) {
+    if (!checkTimerMove()) {
         return 0;
-    } else {
-        getTimer().reset();
     }
 
     int toReturn;

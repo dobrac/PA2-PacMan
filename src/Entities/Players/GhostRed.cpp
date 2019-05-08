@@ -12,6 +12,9 @@ std::string GhostRed::print() const {
     return "R";
 }
 
-bool GhostRed::chase(GameMap &map) {
-    return m_MotionBase->chase(map, this);
+bool GhostRed::chase(GameWorld &world) {
+    if (checkTimerMove())
+        return m_MotionBase->chase(world, this);
+    else
+        return false;
 }

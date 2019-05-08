@@ -6,7 +6,7 @@ class GhostYellow : public Ghost {
 public:
     GhostYellow(const Pos &pos, int speed = 250);
 
-    bool chase(GameMap &map) override;
+    bool chase(GameWorld &world) override;
 
     std::string print() const override;
 };

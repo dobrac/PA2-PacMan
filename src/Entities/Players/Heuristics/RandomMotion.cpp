@@ -1,13 +1,7 @@
 #include "RandomMotion.h"
 
 // Random motion (goes straight)
-bool RandomMotion::chase(GameMap &map, Player *ghost) {
-    if (ghost->getTimer().elapsed() < ghost->getSpeed()) {
-        return false;
-    } else {
-        ghost->getTimer().reset();
-    }
-
+bool RandomMotion::chase(GameWorld &world, Player *ghost) {
     std::vector<std::shared_ptr<Entity>> directions;
 
     Pos posLeft(-1, 0);
@@ -15,19 +9,19 @@ bool RandomMotion::chase(GameMap &map, Player *ghost) {
     Pos posRight(1, 0);
     Pos posDown(0, 1);
 
-    std::shared_ptr<Entity> entLeft = map.getScreenAt(ghost->getPos() + posLeft);
+    std::shared_ptr<Entity> entLeft = world.getScreenAt(ghost->getPos() + posLeft);
     if (entLeft->getType() != Entity::EBorder && ghost->getVec() != posRight)
         directions.push_back(entLeft);
 
-    std::shared_ptr<Entity> entUp = map.getScreenAt(ghost->getPos() + posUp);
+    std::shared_ptr<Entity> entUp = world.getScreenAt(ghost->getPos() + posUp);
     if (entUp->getType() != Entity::EBorder && ghost->getVec() != posDown)
         directions.push_back(entUp);
 
-    std::shared_ptr<Entity> entRight = map.getScreenAt(ghost->getPos() + posRight);
+    std::shared_ptr<Entity> entRight = world.getScreenAt(ghost->getPos() + posRight);
     if (entRight->getType() != Entity::EBorder && ghost->getVec() != posLeft)
         directions.push_back(entRight);
 
-    std::shared_ptr<Entity> entDown = map.getScreenAt(ghost->getPos() + posDown);
+    std::shared_ptr<Entity> entDown = world.getScreenAt(ghost->getPos() + posDown);
     if (entDown->getType() != Entity::EBorder && ghost->getVec() != posUp)
         directions.push_back(entDown);
 

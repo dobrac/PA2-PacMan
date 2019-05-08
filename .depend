@@ -1,120 +1,131 @@
 Console.o: src/Console.cpp src/Console.h
 ArrowQueue.o: src/ArrowQueue.cpp src/ArrowQueue.h src/Pos.h src/Console.h
 Game.o: src/Game.cpp src/Game.h src/Console.h src/Pos.h \
- src/Entities/Entity.h src/Entities/../Game/GameMap.h \
- src/Entities/../Game/../ArrowQueue.h src/Entities/Players/Player.h \
+ src/Entities/Entity.h src/Entities/Players/Player.h \
  src/Entities/Players/../../Timer.h src/Entities/Players/PacMan.h \
- src/Game/GameBoard.h src/Game/../Entities/Players/Ghost.h \
- src/Game/../Entities/Players/Heuristics/Motion.h src/Entities/Border.h \
- src/Entities/Point.h src/File.h src/Exceptions/ExceptionWrongMapFormat.h
+ src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Game/../ArrowQueue.h src/Game/GameBoard.h \
+ src/Game/GameWorld.h src/Game/../Entities/Players/Ghost.h \
+ src/Entities/Border.h src/Entities/Point.h src/File.h \
+ src/Exceptions/ExceptionWrongMapFormat.h
 Timer.o: src/Timer.cpp src/Timer.h
 Pos.o: src/Pos.cpp src/Pos.h
 Border.o: src/Entities/Border.cpp src/Entities/Border.h \
- src/Entities/Entity.h src/Entities/../Pos.h \
- src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h
+ src/Entities/Entity.h src/Entities/../Pos.h
 PacMan.o: src/Entities/Players/PacMan.cpp src/Entities/Players/PacMan.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
- src/Entities/Players/../../Pos.h \
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
  src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
- src/Entities/Players/../../Timer.h src/Entities/Players/../Empty.h
+ src/Entities/Players/../Empty.h
 GhostYellow.o: src/Entities/Players/GhostYellow.cpp \
  src/Entities/Players/GhostYellow.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
- src/Entities/Players/../../Pos.h \
- src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
+ src/Entities/Players/PacMan.h src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
- src/Entities/Players/../../Timer.h \
+ src/Entities/Players/Heuristics/RandomMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
- src/Entities/Players/Heuristics/RandomMotion.h
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h
 RandomMotion.o: src/Entities/Players/Heuristics/RandomMotion.cpp \
  src/Entities/Players/Heuristics/RandomMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../Player.h \
+ src/Entities/Players/Heuristics/../../Entity.h \
+ src/Entities/Players/Heuristics/../../../Pos.h \
+ src/Entities/Players/Heuristics/../../../Timer.h \
+ src/Entities/Players/Heuristics/../PacMan.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
- src/Entities/Players/Heuristics/../../../Game/../Pos.h \
- src/Entities/Players/Heuristics/../../../Game/../Entities/Entity.h \
- src/Entities/Players/Heuristics/../Player.h \
- src/Entities/Players/Heuristics/../../../Timer.h
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h
 Motion.o: src/Entities/Players/Heuristics/Motion.cpp \
  src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../Player.h \
+ src/Entities/Players/Heuristics/../../Entity.h \
+ src/Entities/Players/Heuristics/../../../Pos.h \
+ src/Entities/Players/Heuristics/../../../Timer.h \
+ src/Entities/Players/Heuristics/../PacMan.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
- src/Entities/Players/Heuristics/../../../Game/../Pos.h \
- src/Entities/Players/Heuristics/../../../Game/../Entities/Entity.h \
- src/Entities/Players/Heuristics/../Player.h \
- src/Entities/Players/Heuristics/../../../Timer.h
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h
 CompletelyRandomMotion.o: \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.cpp \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../Player.h \
+ src/Entities/Players/Heuristics/../../Entity.h \
+ src/Entities/Players/Heuristics/../../../Pos.h \
+ src/Entities/Players/Heuristics/../../../Timer.h \
+ src/Entities/Players/Heuristics/../PacMan.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
- src/Entities/Players/Heuristics/../../../Game/../Pos.h \
- src/Entities/Players/Heuristics/../../../Game/../Entities/Entity.h \
- src/Entities/Players/Heuristics/../Player.h \
- src/Entities/Players/Heuristics/../../../Timer.h
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h
 Player.o: src/Entities/Players/Player.cpp src/Entities/Players/Player.h \
  src/Entities/Players/../Entity.h src/Entities/Players/../../Pos.h \
- src/Entities/Players/../../Game/GameMap.h \
- src/Entities/Players/../../Game/../ArrowQueue.h \
  src/Entities/Players/../../Timer.h
 GhostRed.o: src/Entities/Players/GhostRed.cpp \
  src/Entities/Players/GhostRed.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
- src/Entities/Players/../../Pos.h \
- src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
+ src/Entities/Players/PacMan.h src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
- src/Entities/Players/../../Timer.h \
+ src/Entities/Players/Heuristics/CompletelyRandomMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
- src/Entities/Players/Heuristics/CompletelyRandomMotion.h
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h
 Ghost.o: src/Entities/Players/Ghost.cpp src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
- src/Entities/Players/../../Pos.h \
- src/Entities/Players/../../Game/GameMap.h \
- src/Entities/Players/../../Game/../ArrowQueue.h \
- src/Entities/Players/../../Timer.h \
- src/Entities/Players/Heuristics/Motion.h
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
+ src/Entities/Players/PacMan.h src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Game/../ArrowQueue.h
 Entity.o: src/Entities/Entity.cpp src/Entities/Entity.h \
- src/Entities/../Pos.h src/Entities/../Game/GameMap.h \
- src/Entities/../Game/../ArrowQueue.h
+ src/Entities/../Pos.h
 Empty.o: src/Entities/Empty.cpp src/Entities/Empty.h \
- src/Entities/Entity.h src/Entities/../Pos.h \
- src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h
+ src/Entities/Entity.h src/Entities/../Pos.h
 Point.o: src/Entities/Point.cpp src/Entities/Point.h \
- src/Entities/Entity.h src/Entities/../Pos.h \
- src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h
-File.o: src/File.cpp src/File.h src/Game/GameBoard.h \
+ src/Entities/Entity.h src/Entities/../Pos.h
+File.o: src/File.cpp src/File.h src/Game/GameBoard.h src/Game/GameWorld.h \
  src/Game/../Entities/Players/PacMan.h \
  src/Game/../Entities/Players/Player.h \
  src/Game/../Entities/Players/../Entity.h \
  src/Game/../Entities/Players/../../Pos.h \
+ src/Game/../Entities/Players/../../Timer.h \
  src/Game/../Entities/Players/../../Game/GameMap.h \
  src/Game/../Entities/Players/../../Game/../ArrowQueue.h \
- src/Game/../Entities/Players/../../Timer.h \
- src/Game/../Entities/Players/Ghost.h \
- src/Game/../Entities/Players/Heuristics/Motion.h src/Entities/Border.h \
+ src/Game/../Entities/Players/Ghost.h src/Entities/Border.h \
  src/Entities/Point.h src/Entities/Empty.h \
  src/Exceptions/ExceptionWrongMapFormat.h
 main.o: src/main.cpp src/Game.h src/Console.h src/Pos.h \
- src/Entities/Entity.h src/Entities/../Game/GameMap.h \
- src/Entities/../Game/../ArrowQueue.h src/Entities/Players/Player.h \
+ src/Entities/Entity.h src/Entities/Players/Player.h \
  src/Entities/Players/../../Timer.h src/Entities/Players/PacMan.h \
- src/Game/GameBoard.h src/Game/../Entities/Players/Ghost.h \
- src/Game/../Entities/Players/Heuristics/Motion.h
+ src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Game/../ArrowQueue.h src/Game/GameBoard.h \
+ src/Game/GameWorld.h src/Game/../Entities/Players/Ghost.h
 GameBoard.o: src/Game/GameBoard.cpp src/Game/GameBoard.h \
- src/Game/../Entities/Players/PacMan.h \
+ src/Game/GameWorld.h src/Game/../Entities/Players/PacMan.h \
  src/Game/../Entities/Players/Player.h \
  src/Game/../Entities/Players/../Entity.h \
  src/Game/../Entities/Players/../../Pos.h \
+ src/Game/../Entities/Players/../../Timer.h \
  src/Game/../Entities/Players/../../Game/GameMap.h \
  src/Game/../Entities/Players/../../Game/../ArrowQueue.h \
- src/Game/../Entities/Players/../../Timer.h \
  src/Game/../Entities/Players/Ghost.h \
- src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Exceptions/ExceptionPosNotFound.h \
  src/Game/../Entities/Players/GhostYellow.h \
  src/Game/../Entities/Players/GhostRed.h
 GameMap.o: src/Game/GameMap.cpp src/Game/GameMap.h \
  src/Game/../ArrowQueue.h src/Game/../Pos.h src/Game/../Entities/Entity.h \
  src/Game/../Exceptions/ExceptionPosNotFound.h
+GameWorld.o: src/Game/GameWorld.cpp src/Game/GameWorld.h \
+ src/Game/../Entities/Players/PacMan.h \
+ src/Game/../Entities/Players/Player.h \
+ src/Game/../Entities/Players/../Entity.h \
+ src/Game/../Entities/Players/../../Pos.h \
+ src/Game/../Entities/Players/../../Timer.h \
+ src/Game/../Entities/Players/../../Game/GameMap.h \
+ src/Game/../Entities/Players/../../Game/../ArrowQueue.h \
+ src/Game/../Entities/Players/Ghost.h \
+ src/Game/../Entities/Players/GhostYellow.h \
+ src/Game/../Entities/Players/GhostRed.h

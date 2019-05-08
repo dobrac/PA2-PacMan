@@ -4,5 +4,5 @@
 
 class CompletelyRandomMotion : public Motion {
 public:
-    bool chase(GameMap &map, Player * ghost) override;
+    bool chase(GameWorld &world, Player * ghost) override;
 };

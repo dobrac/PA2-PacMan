@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Entity.h"
-#include "../../Game/GameMap.h"
 #include "../../Pos.h"
 #include "../../Timer.h"
 
@@ -21,6 +20,8 @@ public:
     int getSpeed() const;
 
     void resetPos();
+
+    bool checkTimerMove();
 
 protected:
     Pos m_Vec = Pos(0, 0);

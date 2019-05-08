@@ -5,8 +5,6 @@
 #include <memory>
 #include <vector>
 
-class Entity;
-
 class GameMap {
 public:
     void addScreen(const std::shared_ptr<Entity> &entity);

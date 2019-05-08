@@ -1,12 +1,9 @@
 #pragma once
 
 #include "../Pos.h"
-#include "../Game/GameMap.h"
 
 #include <string>
 #include <list>
-
-class GameMap;
 
 class Entity {
 public:
