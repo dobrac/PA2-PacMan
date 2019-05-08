@@ -50,6 +50,19 @@ Motion.o: src/Entities/Players/Heuristics/Motion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
  src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h
+FollowMotion.o: src/Entities/Players/Heuristics/FollowMotion.cpp \
+ src/Entities/Players/Heuristics/FollowMotion.h \
+ src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../Player.h \
+ src/Entities/Players/Heuristics/../../Entity.h \
+ src/Entities/Players/Heuristics/../../../Pos.h \
+ src/Entities/Players/Heuristics/../../../Timer.h \
+ src/Entities/Players/Heuristics/../PacMan.h \
+ src/Entities/Players/Heuristics/../../../Game/GameMap.h \
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h \
+ src/Entities/Players/Heuristics/../../../Console.h
 CompletelyRandomMotion.o: \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.cpp \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.h \
@@ -66,6 +79,15 @@ CompletelyRandomMotion.o: \
 Player.o: src/Entities/Players/Player.cpp src/Entities/Players/Player.h \
  src/Entities/Players/../Entity.h src/Entities/Players/../../Pos.h \
  src/Entities/Players/../../Timer.h
+GhostBlue.o: src/Entities/Players/GhostBlue.cpp \
+ src/Entities/Players/GhostBlue.h src/Entities/Players/Ghost.h \
+ src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
+ src/Entities/Players/PacMan.h src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/FollowMotion.h \
+ src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h
 GhostRed.o: src/Entities/Players/GhostRed.cpp \
  src/Entities/Players/GhostRed.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
@@ -128,4 +150,5 @@ GameWorld.o: src/Game/GameWorld.cpp src/Game/GameWorld.h \
  src/Game/../Entities/Players/../../Game/../ArrowQueue.h \
  src/Game/../Entities/Players/Ghost.h \
  src/Game/../Entities/Players/GhostYellow.h \
- src/Game/../Entities/Players/GhostRed.h
+ src/Game/../Entities/Players/GhostRed.h \
+ src/Game/../Entities/Players/GhostBlue.h

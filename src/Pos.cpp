@@ -62,4 +62,10 @@ Pos Pos::operator*(Pos posRemove) const {
     return posRemove *= *this;
 }
 
+bool Pos::operator<(const Pos &pos) const {
+    if (m_Y != pos.m_Y)
+        return m_Y < pos.m_Y;
+    return m_X < pos.m_X;
+}
+
 

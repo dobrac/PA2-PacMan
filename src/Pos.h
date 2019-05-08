@@ -10,18 +10,26 @@ public:
 
     bool empty() const;
 
-    std::string operator() () const;
+    std::string operator()() const;
 
-    Pos & operator+= (const Pos & posAdd);
-    Pos & operator-= (const Pos & posRemove);
-    Pos & operator*= (const Pos & posMulti);
+    Pos &operator+=(const Pos &posAdd);
 
-    Pos operator+ (Pos posAdd) const;
-    Pos operator- (Pos posRemove) const;
-    Pos operator* (Pos posMulti) const;
+    Pos &operator-=(const Pos &posRemove);
 
-    bool operator == (const Pos & posCmp) const;
-    bool operator != (const Pos & posCmp) const;
+    Pos &operator*=(const Pos &posMulti);
+
+    Pos operator+(Pos posAdd) const;
+
+    Pos operator-(Pos posRemove) const;
+
+    Pos operator*(Pos posMulti) const;
+
+    bool operator==(const Pos &posCmp) const;
+
+    bool operator!=(const Pos &posCmp) const;
+
+
+    bool operator<(const Pos &pos) const;
 
     int getX() const;
 
