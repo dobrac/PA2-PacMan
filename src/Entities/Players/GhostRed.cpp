@@ -22,7 +22,7 @@ bool GhostRed::chase(GameWorld &world) {
 }
 
 bool GhostRed::frightened(GameWorld &world) {
-    if (checkTimerMove())
+    if (checkTimerMove(world.getPacMan().getSpeed()*2))
         return m_MotionFrightened->chase(world, this);
     else
         return false;

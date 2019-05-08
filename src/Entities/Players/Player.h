@@ -21,7 +21,7 @@ public:
 
     void resetPos();
 
-    bool checkTimerMove();
+    bool checkTimerMove(int speed = 0);
 
 protected:
     Pos m_Vec = Pos(0, 0);
