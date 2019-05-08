@@ -3,7 +3,7 @@
 Bonus::Bonus(const Pos &pos) : Entity(pos) {
 }
 
-std::string Bonus::print() const {
+std::string Bonus::print(const GameBoard &) const {
     return "%";
 }
 

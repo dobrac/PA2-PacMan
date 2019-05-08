@@ -10,7 +10,7 @@ GhostRed::GhostRed(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostRed::print() const {
+std::string GhostRed::print(const GameBoard &) const {
     return "R";
 }
 

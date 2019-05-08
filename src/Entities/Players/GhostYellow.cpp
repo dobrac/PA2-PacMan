@@ -9,7 +9,7 @@ GhostYellow::GhostYellow(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostYellow::print() const {
+std::string GhostYellow::print(const GameBoard &) const {
     return "Y";
 }
 

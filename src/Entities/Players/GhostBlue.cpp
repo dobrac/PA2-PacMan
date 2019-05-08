@@ -9,7 +9,7 @@ GhostBlue::GhostBlue(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostBlue::print() const {
+std::string GhostBlue::print(const GameBoard &) const {
     return "B";
 }
 

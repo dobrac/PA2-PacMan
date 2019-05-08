@@ -9,5 +9,5 @@ public:
     bool chase(GameWorld &world) override;
     bool frightened(GameWorld &world) override;
 
-    std::string print() const override;
+    std::string print(const GameBoard &board) const override;
 };

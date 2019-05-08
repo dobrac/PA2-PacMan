@@ -21,6 +21,7 @@ public:
     void removeLives(int count);
 
     std::shared_ptr<Mode> & getGameMode();
+    const std::shared_ptr<Mode> & getGameMode() const;
 
     bool update();
 

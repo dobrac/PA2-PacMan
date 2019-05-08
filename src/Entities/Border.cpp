@@ -3,7 +3,7 @@
 Border::Border(const Pos &pos) : Entity(pos) {
 }
 
-std::string Border::print() const {
+std::string Border::print(const GameBoard &) const {
     return "*";
 }
 

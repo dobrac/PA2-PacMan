@@ -44,6 +44,10 @@ std::shared_ptr<Mode> &GameBoard::getGameMode() {
     return m_GameMode;
 }
 
+const std::shared_ptr<Mode> &GameBoard::getGameMode() const {
+    return m_GameMode;
+}
+
 bool GameBoard::update() {
     if (!isEnded()) {
         if (m_TimerMode.elapsed() > 10) {

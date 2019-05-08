@@ -40,16 +40,17 @@ void Game::showGame() {
 
         // Show screen entities
         for (auto &ent : getBoard().getScreen()) {
-            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print();
+            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
         }
 
         // Show ghosts
         for (auto &ent : getBoard().getGhosts()) {
-            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print();
+            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
         }
 
         // Show PacMan
-        screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()] = getBoard().getPacMan().print();
+        screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()] = getBoard().getPacMan().print(
+                getBoard());
 
         // Print Score
         printLine(

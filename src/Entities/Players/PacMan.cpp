@@ -35,8 +35,8 @@ int PacMan::move(GameBoard &board) {
     return toReturn;
 }
 
-std::string PacMan::print() const {
-    if (m_Vec == Pos(1, 0))
+std::string PacMan::print(const GameBoard &board) const {
+    /*if (m_Vec == Pos(1, 0))
         return "→";
     else if (m_Vec == Pos(-1, 0))
         return "←";
@@ -44,8 +44,12 @@ std::string PacMan::print() const {
         return "↓";
     else if (m_Vec == Pos(0, -1))
         return "↑";
-    else
+    else*/
+    if (board.getGameMode()->getType() == Mode::MNormal) {
+        return "O";
+    } else {
         return "C";
+    }
 }
 
 Entity::EntityType PacMan::getType() const {

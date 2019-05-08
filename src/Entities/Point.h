@@ -6,7 +6,7 @@ class Point : public Entity {
 public:
     Point(const Pos &pos);
 
-    std::string print() const override;
+    std::string print(const GameBoard &board) const override;
 
     EntityType getType() const override;
 

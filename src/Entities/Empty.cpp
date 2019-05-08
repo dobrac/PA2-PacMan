@@ -3,7 +3,7 @@
 Empty::Empty(const Pos &pos) : Entity(pos) {
 }
 
-std::string Empty::print() const {
+std::string Empty::print(const GameBoard &) const {
     return " ";
 }
 
