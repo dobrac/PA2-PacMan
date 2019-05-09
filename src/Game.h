@@ -45,5 +45,5 @@ private:
 
     void startGame(const std::string &mapName);
 
-    static void endGame();
+    void endGame();
 };

@@ -203,6 +203,7 @@ void Game::startGame(const std::string &mapName) {
 
 void Game::endGame() {
     printLine("Ending game...");
+    m_ShouldUpdate = true;
 }
 
 GameBoard &Game::getBoard() {
