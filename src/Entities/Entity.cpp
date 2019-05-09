@@ -12,3 +12,7 @@ const Pos & Entity::getPos() const {
 void Entity::setPos(const Pos &pos) {
     m_Position = pos;
 }
+
+bool Entity::operator<(const Entity &ent) {
+    return this->getPos() < ent.getPos();
+}

@@ -22,7 +22,6 @@ const std::vector<std::shared_ptr<Entity>> &GameMap::getScreen() const {
     return m_Screen;
 }
 
-
 const std::shared_ptr<Entity> &GameMap::getScreenAt(const Pos &pos) const {
     for (auto &it : m_Screen) {
         if (it->getPos() == pos)
@@ -42,4 +41,21 @@ void GameMap::removeScreenAt(const Pos &pos) {
             break;
         }
     }
+}
+
+std::map<Pos, std::shared_ptr<Entity>> GameMap::getScreenMap() const {
+    std::map<Pos, std::shared_ptr<Entity>> entities;
+    for (auto &it : m_Screen) {
+        entities.emplace(it->getPos(), it);
+    }
+    return entities;
+}
+
+const std::shared_ptr<Entity> &
+GameMap::getScreenAt(const std::map<Pos, std::shared_ptr<Entity>> &entities, const Pos &pos) {
+    auto it = entities.find(pos);
+    if (it != entities.end())
+        return it->second;
+
+    throw ExceptionPosNotFound();
 }

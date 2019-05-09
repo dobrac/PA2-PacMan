@@ -28,6 +28,8 @@ public:
 
     void setPos(const Pos &pos);
 
+    bool operator<(const Entity & ent);
+
 protected:
 
     Pos m_Position;

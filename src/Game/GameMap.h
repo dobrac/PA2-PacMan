@@ -4,6 +4,7 @@
 #include "../Entities/Entity.h"
 #include <memory>
 #include <vector>
+#include <map>
 
 class GameMap {
 public:
@@ -18,7 +19,13 @@ public:
     const std::vector<std::shared_ptr<Entity>> &getScreen() const;
 
     const std::shared_ptr<Entity> &getScreenAt(const Pos &pos) const;
+
     void removeScreenAt(const Pos &pos);
+
+    std::map<Pos, std::shared_ptr<Entity>> getScreenMap() const;
+
+    static const std::shared_ptr<Entity> &
+    getScreenAt(const std::map<Pos, std::shared_ptr<Entity>> &entities, const Pos &pos);
 
     ArrowQueue &getArrowQueue();
 

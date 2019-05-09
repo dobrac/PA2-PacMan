@@ -2,6 +2,7 @@
 
 #include "../../../Game/GameWorld.h"
 #include <set>
+#include <map>
 
 // Follow PacMan
 bool FollowMotion::chase(GameWorld &world, Player *ghost) {
@@ -22,6 +23,10 @@ Pos FollowMotion::findNextPos(const GameWorld &world, const Pos &from, const Pos
     if (from == to) {
         return from;
     }
+
+    // Get Cached entities, in map
+    std::map<Pos, std::shared_ptr<Entity>> entities = world.getScreenMap();
+
 
     std::list<std::shared_ptr<TPosFind>> toCheck;
     toCheck.push_back(std::make_shared<TPosFind>(TPosFind(from, nullptr)));
@@ -45,19 +50,19 @@ Pos FollowMotion::findNextPos(const GameWorld &world, const Pos &from, const Pos
                 return parent->m_Pos;
             }
 
-            std::shared_ptr<Entity> entLeft = world.getScreenAt(posCheck->m_Pos + posLeft);
+            std::shared_ptr<Entity> entLeft = GameMap::getScreenAt(entities, posCheck->m_Pos + posLeft);
             if (entLeft->getType() != Entity::EBorder)
                 toCheck.push_back(std::make_shared<TPosFind>(TPosFind(entLeft->getPos(), posCheck)));
 
-            std::shared_ptr<Entity> entUp = world.getScreenAt(posCheck->m_Pos + posUp);
+            std::shared_ptr<Entity> entUp = GameMap::getScreenAt(entities, posCheck->m_Pos + posUp);
             if (entUp->getType() != Entity::EBorder)
                 toCheck.push_back(std::make_shared<TPosFind>(TPosFind(entUp->getPos(), posCheck)));
 
-            std::shared_ptr<Entity> entRight = world.getScreenAt(posCheck->m_Pos + posRight);
+            std::shared_ptr<Entity> entRight = GameMap::getScreenAt(entities, posCheck->m_Pos + posRight);
             if (entRight->getType() != Entity::EBorder)
                 toCheck.push_back(std::make_shared<TPosFind>(TPosFind(entRight->getPos(), posCheck)));
 
-            std::shared_ptr<Entity> entDown = world.getScreenAt(posCheck->m_Pos + posDown);
+            std::shared_ptr<Entity> entDown = GameMap::getScreenAt(entities, posCheck->m_Pos + posDown);
             if (entDown->getType() != Entity::EBorder)
                 toCheck.push_back(std::make_shared<TPosFind>(TPosFind(entDown->getPos(), posCheck)));
 
