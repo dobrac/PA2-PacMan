@@ -22,6 +22,10 @@ void Game::showMenu() const {
 }
 
 void Game::showScore() const {
+    print("Time in game: ");
+    print(std::to_string((int) getBoard().getGameLength()) + "s");
+    printLine();
+
     print("Points: ");
     print(std::to_string(getBoard().getPoinsGot()));
     print("/");
@@ -66,9 +70,6 @@ bool Game::checkEnd() const {
 
 
 void Game::showScreen() const {
-    // Clear console
-    clear();
-
     const int mapX = getBoard().getX();
     const int mapY = getBoard().getY();
 
@@ -95,9 +96,6 @@ void Game::showScreen() const {
     screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()]
             = getBoard().getPacMan().print(getBoard());
 
-    // Print Score
-    showScore();
-
     // Print Board
     for (int y = 0; y < getBoard().getY(); y++) {
         for (int x = 0; x < getBoard().getX(); x++) {
@@ -110,6 +108,13 @@ void Game::showScreen() const {
 
 void Game::showGame() {
     if (m_ShouldUpdate) {
+        // Clear console
+        clear();
+
+        // Print Score
+        showScore();
+
+        // Print Board
         showScreen();
 
         m_ShouldUpdate = false;

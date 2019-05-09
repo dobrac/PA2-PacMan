@@ -4,17 +4,23 @@
 #include "Entities/Empty.h"
 #include "Exceptions/ExceptionWrongMapFormat.h"
 #include "Entities/Bonus.h"
+#include "Exceptions/ExceptionWrongSettingFormat.h"
+#include "Console.h"
 
 #include <string>
 #include <fstream>
+#include <sstream>
 
 const std::string File::MAPS_LOCATION("maps/");
+const std::string File::SETTINGS_LOCATION("./");
 
 GameBoard File::loadBoard(const std::string &mapName) {
+    GameBoard board;
+
+    board.setSettings(File::loadSettings("settings"));
+
     std::string line;
     std::ifstream myfile(MAPS_LOCATION + mapName + ".pacmap");
-
-    GameBoard board;
 
     if (myfile.is_open()) {
         int x = 0, y = 0;
@@ -83,4 +89,49 @@ bool File::integrityCheck(GameMap &map) {
     }
 
     return true;
+}
+
+Settings File::loadSettings(const std::string &fileName) {
+    std::string line;
+    std::ifstream myfile(SETTINGS_LOCATION + fileName + ".pacset");
+
+    Settings set;
+
+    if (myfile.is_open()) {
+        while (getline(myfile, line)) {
+            std::istringstream iss(line);
+
+            std::string key;
+            std::string word;
+            if (!(iss >> key >> word)) {
+                continue;
+            }
+
+            if (key == "Difficulty:") {
+                auto mapDifficulties = Settings::getDifficulties();
+                auto valueDifficulties = mapDifficulties.find(word);
+                if (valueDifficulties != mapDifficulties.end()) {
+                    set.setDifficulty(valueDifficulties->second);
+                    Console::printLine("Loading Difficulty: " + std::to_string(valueDifficulties->second));
+                    continue;
+                }
+            }
+
+            if (key == "GameMode:") {
+                auto mapGameModes = Settings::getGameModes();
+                auto valueGameModes = mapGameModes.find(word);
+                if (valueGameModes != mapGameModes.end()) {
+                    set.setGameMode(valueGameModes->second);
+                    Console::printLine("Loading GameMode: " + std::to_string(valueGameModes->second->getType()));
+                    continue;
+                }
+            }
+        }
+        myfile.close();
+
+    } else {
+        //throw ExceptionWrongSettingFormat();
+    }
+
+    return set;
 }

@@ -72,7 +72,7 @@ $(BUILD_DIR):
 	$(MKDIR) -p $(BUILD_DIR)
 
 ## Programy  | $(BUILD_DIR)
-$(BUILD_DIR)/%: $(BUILD_DIR)/%.o $(OBJECT_FILES)
+$(BUILD_DIR)/%: $(BUILD_DIR)/%.o $(OBJECT_FILES) $(BUILD_DIR)
 	$(CXX) $(LDFLAGS) $^ -o $@ $(LDLIBS) $(CPPLIBS)
 
 ## Moduly  | $(BUILD_DIR)

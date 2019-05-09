@@ -12,8 +12,11 @@ public:
         MCrazy
     };
 
-    virtual bool update(GameBoard & board) = 0;
-    virtual bool solveConflicts(GameBoard & board) = 0;
+    virtual bool update(GameBoard &board) = 0;
+
+    virtual bool solveConflicts(GameBoard &board) = 0;
+
     virtual ModeType getType() const = 0;
+
     virtual std::string print() const = 0;
 };

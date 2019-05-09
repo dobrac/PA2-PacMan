@@ -71,11 +71,11 @@ void GameBoard::runInvincibleMode() {
 
 void GameBoard::resetMode() {
     if (m_TimerMode.elapsed() >= TIME_INVINCIBLE_MODE && m_GameMode->getType() == Mode::MInvincible)
-        m_GameModeToChange = m_GameModeDefault;
+        m_GameModeToChange = getSettings().getGameMode();
 }
 
 int GameBoard::getTimeChangeMode() const {
-    if (m_GameMode->getType() == m_GameModeDefault->getType())
+    if (m_GameMode->getType() == getSettings().getGameMode()->getType())
         return -1;
 
     int diff = TIME_INVINCIBLE_MODE - (int) m_TimerMode.elapsed();
@@ -86,4 +86,18 @@ int GameBoard::getTimeChangeMode() const {
 
 bool GameBoard::isFrightened() const {
     return m_GameMode->getType() == Mode::MInvincible;
+}
+
+const Settings &GameBoard::getSettings() const {
+    return m_Settings;
+}
+
+void GameBoard::setSettings(const Settings &settings) {
+    m_Settings = settings;
+    m_GameModeToChange = m_Settings.getGameMode();
+    m_GameMode = m_GameModeToChange;
+}
+
+double GameBoard::getGameLength() const {
+    return m_TimerGameLength.elapsed();
 }
