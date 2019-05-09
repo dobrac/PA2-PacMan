@@ -21,5 +21,5 @@ public:
 
 private:
 
-    int setMovePos(GameBoard &board);
+    bool setMovePos(GameBoard &board);
 };

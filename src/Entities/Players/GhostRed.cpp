@@ -3,6 +3,8 @@
 #include "Heuristics/CompletelyRandomMotion.h"
 #include "Heuristics/RandomMotion.h"
 
+#include "../../Game/GameBoard.h"
+
 GhostRed::GhostRed(const Pos &pos, int speed)
         : Ghost(pos,
                 std::make_shared<CompletelyRandomMotion>(CompletelyRandomMotion()),
@@ -10,7 +12,10 @@ GhostRed::GhostRed(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostRed::print(const GameBoard &) const {
+std::string GhostRed::print(const GameBoard &board) const {
+    if (board.isFrightened()) {
+        return "A";
+    }
     return "R";
 }
 

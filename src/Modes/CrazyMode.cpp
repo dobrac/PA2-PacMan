@@ -1,14 +1,14 @@
-#include "InvincibleMode.h"
+#include "CrazyMode.h"
 
 #include "../Game/GameBoard.h"
 
-bool InvincibleMode::update(GameBoard & board) {
+bool CrazyMode::update(GameBoard & board) {
     bool shouldUpdate = false;
 
     if (board.isStarted()) {
         // Move Ghosts
         for (auto &ghost : board.getGhosts()) {
-            if (ghost->frightened(board)) {
+            if (ghost->follow(board)) {
                 shouldUpdate = true;
             }
         }
@@ -26,20 +26,25 @@ bool InvincibleMode::update(GameBoard & board) {
     return shouldUpdate;
 }
 
-bool InvincibleMode::solveConflicts(GameBoard & board) {
+bool CrazyMode::solveConflicts(GameBoard & board) {
     for (auto &ghost : board.getGhosts()) {
         if (ghost->getPos() == board.getPacMan().getPos()) {
-            ghost->setVec({0,0});
-            ghost->resetPos();
+            board.removeLives(1);
+            board.getPacMan().setVec({0, 0});
+            board.getPacMan().resetPos();
+            for (auto &ghostRes : board.getGhosts()) {
+                ghostRes->resetPos();
+            }
+            return true;
         }
     }
     return false;
 }
 
-std::string InvincibleMode::print() const {
-    return "Invincible";
+std::string CrazyMode::print() const {
+    return "Crazy";
 }
 
-Mode::ModeType InvincibleMode::getType() const {
-    return MInvincible;
+Mode::ModeType CrazyMode::getType() const {
+    return MCrazy;
 }

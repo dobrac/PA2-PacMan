@@ -14,14 +14,15 @@ bool NormalMode::update(GameBoard & board) {
         }
     }
 
+    solveConflicts(board);
+
     // Move PacMan
-    int pac = board.getPacMan().move(board);
-    if (pac == 2) {
-        board.addPointsGot(1);
-    }
-    if (pac > 0) {
+    if (board.getPacMan().move(board)) {
         shouldUpdate = true;
     }
+
+    solveConflicts(board);
+
     return shouldUpdate;
 }
 

@@ -8,7 +8,8 @@ class Mode {
 public:
     enum ModeType {
         MNormal,
-        MInvincible
+        MInvincible,
+        MCrazy
     };
 
     virtual bool update(GameBoard & board) = 0;

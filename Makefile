@@ -2,7 +2,7 @@
 CXX ?= g++
 CXXFLAGS ?= -std=c++14
 CPPFLAGS ?= -Wall -pedantic -Wextra -g
-CPPLIBS ?= -pthread
+CPPLIBS ?= -fsanitize=address
 #-lncurses
 
 MKDIR ?= mkdir

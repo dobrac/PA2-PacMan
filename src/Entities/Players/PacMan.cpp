@@ -13,26 +13,22 @@ int PacMan::move(GameBoard &board) {
         return 0;
     }
 
-    int toReturn;
-
     Pos posVecBack = getVec();
     if (!board.getArrowQueue().empty()) {
         setVec(board.getArrowQueue().get());
 
-        toReturn = setMovePos(board);
-        if (toReturn > 0) {
+        if (setMovePos(board)) {
             board.getArrowQueue().pop();
-            return toReturn;
+            return true;
         }
     }
 
     setVec(posVecBack);
-    toReturn = setMovePos(board);
-    if (toReturn == 0 || posVecBack == Pos(0, 0)) {
+    if (!setMovePos(board) || posVecBack == Pos(0, 0)) {
         board.getArrowQueue().pop();
-        return toReturn;
+        return false;
     }
-    return toReturn;
+    return true;
 }
 
 std::string PacMan::print(const GameBoard &board) const {
@@ -45,23 +41,23 @@ std::string PacMan::print(const GameBoard &board) const {
     else if (m_Vec == Pos(0, -1))
         return "↑";
     else*/
-    if (board.getGameMode()->getType() == Mode::MNormal) {
-        return "O";
-    } else {
+    if (board.isFrightened()) {
         return "C";
     }
+
+    return "O";
 }
 
 Entity::EntityType PacMan::getType() const {
     return EPacMan;
 }
 
-int PacMan::setMovePos(GameBoard &board) {
+bool PacMan::setMovePos(GameBoard &board) {
     std::shared_ptr<Entity> ent = board.getScreenAt(getDirection());
 
     if (ent->getType() == EEmpty) {
         m_Position = getDirection();
-        return 1;
+        return true;
     }
     if (ent->getType() == EPoint || ent->getType() == EBonus) {
         board.removeScreenAt(getDirection());
@@ -69,9 +65,11 @@ int PacMan::setMovePos(GameBoard &board) {
         m_Position = getDirection();
         if (ent->getType() == EBonus) {
             board.runInvincibleMode();
+        } else if (ent->getType() == EPoint) {
+            board.addPointsGot(1);
         }
-        return 2;
+        return true;
     }
-    return 0;
+    return false;
 }
 

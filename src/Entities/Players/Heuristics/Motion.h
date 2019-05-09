@@ -2,7 +2,9 @@
 
 #include "../Player.h"
 #include "../PacMan.h"
-#include "../../../Game/GameWorld.h"
+#include <memory>
+
+class GameWorld;
 
 class Motion {
 public:

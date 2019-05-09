@@ -2,6 +2,8 @@
 
 #include "Heuristics/RandomMotion.h"
 
+#include "../../Game/GameBoard.h"
+
 GhostYellow::GhostYellow(const Pos &pos, int speed)
         : Ghost(pos,
                 std::make_shared<RandomMotion>(RandomMotion()),
@@ -9,7 +11,10 @@ GhostYellow::GhostYellow(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostYellow::print(const GameBoard &) const {
+std::string GhostYellow::print(const GameBoard &board) const {
+    if (board.isFrightened()) {
+        return "A";
+    }
     return "Y";
 }
 

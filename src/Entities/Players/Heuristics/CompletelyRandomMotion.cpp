@@ -1,5 +1,7 @@
 #include "CompletelyRandomMotion.h"
 
+#include "../../../Game/GameWorld.h"
+#include <vector>
 // Completely random potion
 bool CompletelyRandomMotion::chase(GameWorld &world, Player *ghost) {
     std::vector<std::shared_ptr<Entity>> directions;

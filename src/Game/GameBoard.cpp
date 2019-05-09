@@ -55,7 +55,6 @@ bool GameBoard::update() {
         }
 
         bool shouldUpdate = m_GameMode->update(*this);
-        m_GameMode->solveConflicts(*this);
         return shouldUpdate;
     } else {
         return false;
@@ -74,8 +73,8 @@ void GameBoard::runInvincibleMode() {
 }
 
 void GameBoard::resetMode() {
-    if (m_TimerMode.elapsed() >= TIME_INVINCIBLE_MODE && m_GameMode->getType() != Mode::MNormal)
-        m_GameMode = std::make_shared<NormalMode>(NormalMode());
+    if (m_TimerMode.elapsed() >= TIME_INVINCIBLE_MODE && m_GameMode->getType() == Mode::MInvincible)
+        m_GameMode = m_GameModeDefault;
 }
 
 int GameBoard::getTimeChangeMode() const {
@@ -83,4 +82,8 @@ int GameBoard::getTimeChangeMode() const {
     if (diff < 0)
         diff = -1;
     return diff;
+}
+
+bool GameBoard::isFrightened() const {
+    return m_GameMode->getType() == Mode::MInvincible;
 }

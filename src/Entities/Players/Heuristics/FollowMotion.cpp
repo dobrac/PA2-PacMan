@@ -1,5 +1,6 @@
 #include "FollowMotion.h"
 
+#include "../../../Game/GameWorld.h"
 #include <set>
 
 // Follow PacMan

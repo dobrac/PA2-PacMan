@@ -2,6 +2,8 @@
 #include "Heuristics/FollowMotion.h"
 #include "Heuristics/RandomMotion.h"
 
+#include "../../Game/GameBoard.h"
+
 GhostBlue::GhostBlue(const Pos &pos, int speed)
         : Ghost(pos,
                 std::make_shared<FollowMotion>(FollowMotion()),
@@ -9,7 +11,10 @@ GhostBlue::GhostBlue(const Pos &pos, int speed)
     setSpeed(speed);
 }
 
-std::string GhostBlue::print(const GameBoard &) const {
+std::string GhostBlue::print(const GameBoard &board) const {
+    if (board.isFrightened()) {
+        return "A";
+    }
     return "B";
 }
 
@@ -21,7 +26,7 @@ bool GhostBlue::chase(GameWorld &world) {
 }
 
 bool GhostBlue::frightened(GameWorld &world) {
-    if (checkTimerMove(world.getPacMan().getSpeed()*2))
+    if (checkTimerMove(world.getPacMan().getSpeed() * 2))
         return m_MotionFrightened->chase(world, this);
     else
         return false;
