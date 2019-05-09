@@ -22,7 +22,7 @@ PacMan &GameWorld::getPacMan() {
 
 void GameWorld::initializeGhosts(const Pos &pos) {
     addGhost(std::make_shared<GhostYellow>(GhostYellow(pos, 200)));
-    addGhost(std::make_shared<GhostRed>(GhostRed(pos, 50)));
+    addGhost(std::make_shared<GhostRed>(GhostRed(pos, 250)));
     addGhost(std::make_shared<GhostBlue>(GhostBlue(pos, 300)));
 }
 

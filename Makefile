@@ -1,9 +1,10 @@
+.SECONDARY:
+
 # Konstanty
 CXX ?= g++
 CXXFLAGS ?= -std=c++14
 CPPFLAGS ?= -Wall -pedantic -Wextra -g
 CPPLIBS ?= -fsanitize=address
-#-lncurses
 
 MKDIR ?= mkdir
 RM ?= rm
@@ -13,7 +14,10 @@ BUILD_DIR ?= build
 DOC_DIR ?= doc
 
 SOURCE_FILES := $(shell find $(SOURCE_DIR) -name "*.cpp")
-SOURCE_FILES_NAMES := $(shell find $(SOURCE_DIR) -name "*.cpp" | sed -n 's|^$(SOURCE_DIR)/||p')
+#SOURCE_FILES_NAMES := $(shell find $(SOURCE_DIR) -name "*.cpp" | sed -n 's|^$(SOURCE_DIR)/||p')
+
+#HEADER_FILES := $(shell find $(SOURCE_DIR) -name "*.h")
+#HEADER_FILES_NAMES := $(shell find $(SOURCE_DIR) -name "*.h" | sed -n 's|^$(SOURCE_DIR)/||p')
 
 OBJECT_FILES_TEMP = $(patsubst %.cpp, %.o, $(SOURCE_FILES))
 OBJECT_FILES = $(patsubst $(SOURCE_DIR)/%, $(BUILD_DIR)/%, $(OBJECT_FILES_TEMP))
@@ -40,16 +44,13 @@ doc:
 	doxygen Doxyfile
 	@echo "DOC OK"
 
-## Spuštění `depend`
+## Spuštění `depend` generace
 .PHONY: depend
 depend:
 	$(RM) .depend
 	$(CXX) $(CPPFLAGS) -MM $(SOURCE_FILES)>>./.depend;
 
-.depend:
-	touch .depend
-
-## Odstranění vygenerovatelných souborů
+## Odstranění vygenerovatelných souborů a dokumentace
 .PHONY: clean
 clean:
 	$(RM) -r $(BUILD_DIR)
@@ -61,17 +62,21 @@ line:
 	find src -type f -print0 | xargs -0 cat | wc -l
 
 # Pravidla
+# Vytvoření souboru .depend
+.depend:
+	touch .depend
+
 ## Adresář
 $(BUILD_DIR):
 	make depend
 	$(MKDIR) -p $(BUILD_DIR)
 
-## Programy
-$(BUILD_DIR)/%: $(BUILD_DIR)/%.o $(OBJECT_FILES) | $(BUILD_DIR)
+## Programy  | $(BUILD_DIR)
+$(BUILD_DIR)/%: $(BUILD_DIR)/%.o $(OBJECT_FILES)
 	$(CXX) $(LDFLAGS) $^ -o $@ $(LDLIBS) $(CPPLIBS)
 
-## Moduly
-$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp | $(BUILD_DIR)
+## Moduly  | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	${MKDIR} -p ${DIRECTORIES}
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@ $(CPPLIBS)
 

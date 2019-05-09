@@ -7,7 +7,7 @@
 
 GhostRed::GhostRed(const Pos &pos, int speed)
         : Ghost(pos,
-                std::make_shared<CompletelyRandomMotion>(CompletelyRandomMotion()),
+                std::make_shared<RandomMotion>(RandomMotion()),
                 std::make_shared<RandomMotion>(RandomMotion())) {
     setSpeed(speed);
 }
