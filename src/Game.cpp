@@ -21,69 +21,102 @@ void Game::showMenu() const {
     printLine("3) Exit Game ('e')");
 }
 
+void Game::showScore() const {
+    print("Points: ");
+    print(std::to_string(getBoard().getPoinsGot()));
+    print("/");
+    print(std::to_string(getBoard().getPointsMax()));
+    print(" | ");
+    print("Lives: ");
+    print(std::to_string(getBoard().getLives()));
+    printLine();
+
+    print("Mode: ");
+    print(getBoard().getGameMode()->print());
+    if (getBoard().getTimeChangeMode() != -1) {
+        print(" | ");
+        print("Next change: ");
+        print(std::to_string(getBoard().getTimeChangeMode()) + "s");
+    }
+    printLine();
+
+    print("Performance (TPS): ");
+    print(std::to_string(m_TPS));
+    print("/");
+    print("20");
+    printLine();
+}
+
+
+bool Game::checkEnd() const {
+    // Check winner
+    if (getBoard().checkWinner()) {
+        printLine("Winner! Game ended. (Press 'e' to exit.)");
+        return true;
+    }
+
+    // Check loser
+    if (getBoard().checkLoser()) {
+        printLine("Loser! Game ended. (Press 'e' to exit.)");
+        return true;
+    }
+
+    return false;
+}
+
+
+void Game::showScreen() const {
+    // Clear console
+    clear();
+
+    const int mapX = getBoard().getX();
+    const int mapY = getBoard().getY();
+
+    // Reserve size for screen
+    std::vector<std::vector<std::string>> screen;
+    screen.reserve(mapX);
+    screen.resize(mapX);
+    for (auto &it : screen) {
+        it.reserve(mapY);
+        it.resize(mapY);
+    }
+
+    // Show screen entities
+    for (auto &ent : getBoard().getScreen()) {
+        screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
+    }
+
+    // Show ghosts
+    for (auto &ent : getBoard().getGhosts()) {
+        screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
+    }
+
+    // Show PacMan
+    screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()]
+            = getBoard().getPacMan().print(getBoard());
+
+    // Print Score
+    showScore();
+
+    // Print Board
+    for (int y = 0; y < getBoard().getY(); y++) {
+        for (int x = 0; x < getBoard().getX(); x++) {
+            print(screen[x][y]);
+        }
+        printLine();
+    }
+}
+
+
 void Game::showGame() {
     if (m_ShouldUpdate) {
-        // Clear console
-        clear();
-
-        const int mapX = getBoard().getX();
-        const int mapY = getBoard().getY();
-
-        // Reserve size for screen
-        std::vector<std::vector<std::string>> screen;
-        screen.reserve(mapX);
-        screen.resize(mapX);
-        for (auto &it : screen) {
-            it.reserve(mapY);
-            it.resize(mapY);
-        }
-
-        // Show screen entities
-        for (auto &ent : getBoard().getScreen()) {
-            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
-        }
-
-        // Show ghosts
-        for (auto &ent : getBoard().getGhosts()) {
-            screen[ent->getPos().getX()][ent->getPos().getY()] = ent->print(getBoard());
-        }
-
-        // Show PacMan
-        screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()] = getBoard().getPacMan().print(
-                getBoard());
-
-        // Print Score
-        printLine(
-                "Score: " + std::to_string(getBoard().getPoinsGot())
-                + "/" + std::to_string(getBoard().getPointsMax())
-                + " | Lives: " + std::to_string(getBoard().getLives())
-                + " | Mode: " + getBoard().getGameMode()->print()
-                + " | Mode Change: " + std::to_string(getBoard().getTimeChangeMode()) + "s");
-
-        // Print Board
-        for (int y = 0; y < getBoard().getY(); y++) {
-            for (int x = 0; x < getBoard().getX(); x++) {
-                print(screen[x][y]);
-            }
-            printLine();
-        }
+        showScreen();
 
         m_ShouldUpdate = false;
 
-        // Check winner
-        if (getBoard().checkWinner()) {
-            printLine("Winner! Game ended. (Press 'e' to exit.)");
+        // Check end
+        if (checkEnd())
             return;
-        }
-
-        // Check loser
-        if (getBoard().checkLoser()) {
-            printLine("Loser! Game ended. (Press 'e' to exit.)");
-            return;
-        }
-
-        // Debug arrow queue
-        //getMap().getArrowQueue().print();
     }
 
     if (getBoard().update())
@@ -152,8 +185,18 @@ void Game::startGame(const std::string &mapName) {
         return;
     }
 
+    Timer<Timer_Type_Millisecond> tps;
+    int count = 0;
     while (runGameLoop()) {
         showGame();
+
+        if (tps.elapsed() >= 1000) {
+            m_TPS = count;
+            tps.reset();
+            count = 0;
+        }
+        count++;
+
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }
@@ -163,5 +206,9 @@ void Game::endGame() {
 }
 
 GameBoard &Game::getBoard() {
+    return m_Board;
+}
+
+const GameBoard &Game::getBoard() const {
     return m_Board;
 }

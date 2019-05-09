@@ -3,7 +3,6 @@
 #include "GameWorld.h"
 #include "../Modes/Mode.h"
 #include "../Modes/NormalMode.h"
-#include "../Modes/CrazyMode.h"
 
 class GameBoard : public GameWorld {
 public:
@@ -42,7 +41,7 @@ private:
 
     Timer<Timer_Type_Second> m_TimerMode;
 
-    std::shared_ptr<Mode> m_GameModeDefault = std::make_shared<CrazyMode>(CrazyMode());
+    std::shared_ptr<Mode> m_GameModeDefault = std::make_shared<NormalMode>(NormalMode());
     std::shared_ptr<Mode> m_GameModeToChange = m_GameModeDefault;
 
     /*

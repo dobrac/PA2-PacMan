@@ -75,6 +75,9 @@ void GameBoard::resetMode() {
 }
 
 int GameBoard::getTimeChangeMode() const {
+    if (m_GameMode->getType() == m_GameModeDefault->getType())
+        return -1;
+
     int diff = TIME_INVINCIBLE_MODE - (int) m_TimerMode.elapsed();
     if (diff < 0)
         diff = -1;

@@ -18,14 +18,24 @@ public:
 
     GameBoard &getBoard();
 
+    const GameBoard &getBoard() const;
+
 
 private:
     GameBoard m_Board;
     bool m_ShouldUpdate = true;
 
+    int m_TPS = 20;
+
     void showMenu() const;
 
     void showGame();
+
+    void showScreen() const;
+
+    void showScore() const;
+
+    bool checkEnd() const;
 
     bool runGameLoop();
 
@@ -33,7 +43,7 @@ private:
 
     void startMenu();
 
-    void startGame(const std::string & mapName);
+    void startGame(const std::string &mapName);
 
     static void endGame();
 };
