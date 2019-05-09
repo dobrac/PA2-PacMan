@@ -61,6 +61,9 @@ GameBoard File::loadBoard(const std::string &mapName) {
         }
         myfile.close();
 
+        if (xMax == 0 || y == 0)
+            throw ExceptionWrongMapFormat();
+
         if (!integrityCheck(board))
             throw ExceptionWrongMapFormat();
     } else {

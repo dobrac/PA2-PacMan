@@ -15,12 +15,15 @@ public:
         EPoint,
         EEmpty,
         EGhost,
-        EBonus
+        EBonus,
+        ECherry
     };
 
     explicit Entity(const Pos &pos);
 
     virtual std::string print(const GameBoard &board) const = 0;
+
+    virtual void remove(GameBoard &board);
 
     virtual EntityType getType() const = 0;
 
@@ -28,7 +31,7 @@ public:
 
     void setPos(const Pos &pos);
 
-    bool operator<(const Entity & ent);
+    bool operator<(const Entity &ent);
 
 protected:
 

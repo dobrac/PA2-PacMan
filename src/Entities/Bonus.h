@@ -8,6 +8,8 @@ public:
 
     std::string print(const GameBoard &board) const override;
 
+    void remove(GameBoard &board) override;
+
     EntityType getType() const override;
 
 private:

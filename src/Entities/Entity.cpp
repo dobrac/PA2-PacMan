@@ -16,3 +16,6 @@ void Entity::setPos(const Pos &pos) {
 bool Entity::operator<(const Entity &ent) {
     return this->getPos() < ent.getPos();
 }
+
+void Entity::remove(GameBoard &) {
+}

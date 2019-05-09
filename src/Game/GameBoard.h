@@ -41,6 +41,8 @@ public:
 
     bool update();
 
+    void spawnCherry();
+
 
     void runInvincibleMode();
 

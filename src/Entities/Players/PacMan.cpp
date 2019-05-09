@@ -54,22 +54,29 @@ Entity::EntityType PacMan::getType() const {
 
 bool PacMan::setMovePos(GameBoard &board) {
     std::shared_ptr<Entity> ent = board.getScreenAt(getDirection());
+    if (ent->getType() == EBorder)
+        return false;
 
-    if (ent->getType() == EEmpty) {
-        m_Position = getDirection();
-        return true;
-    }
-    if (ent->getType() == EPoint || ent->getType() == EBonus) {
-        board.removeScreenAt(getDirection());
-        board.addScreen(std::make_shared<Empty>(Empty(getDirection())));
-        m_Position = getDirection();
-        if (ent->getType() == EBonus) {
-            board.runInvincibleMode();
-        } else if (ent->getType() == EPoint) {
-            board.addPointsGot(1);
-        }
-        return true;
-    }
-    return false;
+    ent->remove(board);
+
+    m_Position = getDirection();
+    return true;
+
+    /*if (ent->getType() == EEmpty) {
+         m_Position = getDirection();
+         return true;
+     }
+     if (ent->getType() == EPoint || ent->getType() == ECherry || ent->getType() == EBonus) {
+         board.removeScreenAt(getDirection());
+         board.addScreen(std::make_shared<Empty>(Empty(getDirection())));
+         m_Position = getDirection();
+         if (ent->getType() == EBonus) {
+             board.runInvincibleMode();
+         } else if (ent->getType() == EPoint) {
+             board.addPointsGot(1);
+         }
+         return true;
+     }
+    return false;*/
 }
 

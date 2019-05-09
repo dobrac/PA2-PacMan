@@ -3,6 +3,7 @@
 #include "../Entities/Players/GhostYellow.h"
 #include "../Entities/Players/GhostRed.h"
 #include "../Modes/InvincibleMode.h"
+#include "../Entities/Cherry.h"
 
 void GameBoard::addPointsMax(int count) {
     m_PointsMax += count;
@@ -49,6 +50,8 @@ bool GameBoard::update() {
         if (m_TimerMode.elapsed() > 10) {
             resetMode();
         }
+
+        spawnCherry();
 
         bool shouldUpdate = m_GameMode->update(*this);
         m_GameMode = m_GameModeToChange;
@@ -100,4 +103,19 @@ void GameBoard::setSettings(const Settings &settings) {
 
 double GameBoard::getGameLength() const {
     return m_TimerGameLength.elapsed();
+}
+
+void GameBoard::spawnCherry() {
+    if (((int) getGameLength()) % 60 != 0 || getGameLength() < 10)
+        return;
+
+    int ranX = rand() % (getX() - 1) + 0;
+    int ranY = rand() % (getY() - 1) + 0;
+    Pos ranPos(ranX, ranY);
+
+    std::shared_ptr<Entity> entity = getScreenAt(ranPos);
+    if (entity->getType() == Entity::EEmpty) {
+        removeScreenAt(ranPos);
+        addScreen(std::make_shared<Cherry>(Cherry(ranPos)));
+    }
 }

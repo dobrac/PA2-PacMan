@@ -4,7 +4,7 @@
 
 class Border : public Entity {
 public:
-    explicit Border(const Pos & pos);
+    explicit Border(const Pos &pos);
 
     std::string print(const GameBoard &board) const override;
 
