@@ -1,3 +1,5 @@
+#include <utility>
+
 #pragma once
 
 #include "Motion.h"
@@ -8,9 +10,10 @@ public:
 
 private:
     struct TPosFind {
+        TPosFind(const Pos & pos, std::shared_ptr<TPosFind>  from) :m_Pos(pos), m_PosFrom(std::move(from)) {};
         Pos m_Pos;
         std::shared_ptr<TPosFind> m_PosFrom = nullptr;
     };
 
-    Pos findNextPos(const GameWorld &world, const Pos &from, const Pos &to);
+    static Pos findNextPos(const GameWorld &world, const Pos &from, const Pos &to);
 };

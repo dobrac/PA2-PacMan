@@ -4,7 +4,7 @@
 
 class GhostBlue : public Ghost {
 public:
-    GhostBlue(const Pos &pos, int speed = 250);
+    explicit GhostBlue(const Pos &pos, int speed = 250);
 
     bool chase(GameWorld &world) override;
     bool frightened(GameWorld &world) override;

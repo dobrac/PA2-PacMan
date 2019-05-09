@@ -4,7 +4,7 @@
 
 class Point : public Entity {
 public:
-    Point(const Pos &pos);
+    explicit Point(const Pos &pos);
 
     std::string print(const GameBoard &board) const override;
 

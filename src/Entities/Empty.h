@@ -4,7 +4,7 @@
 
 class Empty : public Entity {
 public:
-    Empty(const Pos &pos);
+    explicit Empty(const Pos &pos);
 
     std::string print(const GameBoard &board) const override;
 

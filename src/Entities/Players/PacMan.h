@@ -6,7 +6,7 @@ class GameBoard;
 
 class PacMan : public Player {
 public:
-    PacMan(const Pos &pos, int speed = 250);
+    explicit PacMan(const Pos &pos, int speed = 250);
 
     /**
      *

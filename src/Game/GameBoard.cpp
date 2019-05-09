@@ -40,10 +40,6 @@ int GameBoard::getLives() const {
     return m_Lives;
 }
 
-std::shared_ptr<Mode> &GameBoard::getGameMode() {
-    return m_GameMode;
-}
-
 const std::shared_ptr<Mode> &GameBoard::getGameMode() const {
     return m_GameMode;
 }
@@ -55,6 +51,7 @@ bool GameBoard::update() {
         }
 
         bool shouldUpdate = m_GameMode->update(*this);
+        m_GameMode = m_GameModeToChange;
         return shouldUpdate;
     } else {
         return false;
@@ -68,13 +65,13 @@ void GameBoard::removeLives(int count) {
 }
 
 void GameBoard::runInvincibleMode() {
-    m_GameMode = std::make_shared<InvincibleMode>(InvincibleMode());
+    m_GameModeToChange = std::make_shared<InvincibleMode>(InvincibleMode());
     m_TimerMode.reset();
 }
 
 void GameBoard::resetMode() {
     if (m_TimerMode.elapsed() >= TIME_INVINCIBLE_MODE && m_GameMode->getType() == Mode::MInvincible)
-        m_GameMode = m_GameModeDefault;
+        m_GameModeToChange = m_GameModeDefault;
 }
 
 int GameBoard::getTimeChangeMode() const {

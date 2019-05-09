@@ -21,7 +21,6 @@ public:
     int getLives() const;
     void removeLives(int count);
 
-    std::shared_ptr<Mode> & getGameMode();
     const std::shared_ptr<Mode> & getGameMode() const;
 
     bool update();
@@ -44,6 +43,11 @@ private:
     Timer<Timer_Type_Second> m_TimerMode;
 
     std::shared_ptr<Mode> m_GameModeDefault = std::make_shared<CrazyMode>(CrazyMode());
+    std::shared_ptr<Mode> m_GameModeToChange = m_GameModeDefault;
+
+    /*
+     * DO NOT SET DIRECTLY, only after update
+     */
     std::shared_ptr<Mode> m_GameMode = m_GameModeDefault;
 };
 

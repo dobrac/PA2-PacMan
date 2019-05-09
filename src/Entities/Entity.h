@@ -18,13 +18,11 @@ public:
         EBonus
     };
 
-    Entity(const Pos &pos);
+    explicit Entity(const Pos &pos);
 
     virtual std::string print(const GameBoard &board) const = 0;
 
     virtual EntityType getType() const = 0;
-
-    bool intersects(const Entity &ent) const;
 
     const Pos &getPos() const;
 

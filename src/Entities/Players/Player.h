@@ -6,7 +6,7 @@
 
 class Player : public Entity {
 public:
-    Player(const Pos &pos);
+    explicit Player(const Pos &pos);
 
     void setVec(const Pos &vec);
 
