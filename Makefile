@@ -1,5 +1,4 @@
-.SECONDARY:
-
+#.SECONDARY:
 # Konstanty
 CXX ?= g++
 CXXFLAGS ?= -std=c++14
@@ -26,39 +25,47 @@ DIRECTORIES_GET := $(shell find $(SOURCE_DIR) -type d)
 DIRECTORIES = $(patsubst $(SOURCE_DIR)%, $(BUILD_DIR)%, $(DIRECTORIES_GET))
 #DIRECTORIES = "$(BUILD_DIR)/Entities/Players" "$(BUILD_DIR)/Entities/Players/Heuristics" "$(BUILD_DIR)/Exceptions" "$(BUILD_DIR)/Game"
 
+
+all: compile
+
 # PŘÍKAZY
+
 ## Spuštění `main`
-.PHONY: main
-main: $(BUILD_DIR)/main
+.PHONY: run
+run: $(BUILD_DIR)/main
 	$(BUILD_DIR)/main
 
-## Spuštění `valgrind`
+## Spuštění s `valgrind`
 .PHONY: valgrind
 valgrind: $(BUILD_DIR)/main
 	valgrind $(BUILD_DIR)/main
 
 ## Spuštění `doxygen`
-.PHONY: doxygen
+.PHONY: doc
 doc:
-	@echo "Generating Documentation"
 	doxygen Doxyfile
-	@echo "DOC OK"
 
 ## Otevření dokumentace
 .PHONY: opendoc
 opendoc:
 	google-chrome $(DOC_DIR)/index.html
 
-## Spuštění `depend` generace
+## Spuštění `.depend` generace
 .PHONY: depend
 depend:
 	$(RM) .depend
 	$(CXX) $(CPPFLAGS) -MM $(SOURCE_FILES)>>./.depend;
 
-## Odstranění vygenerovatelných souborů a dokumentace
+## Odstranění vygenerovaných souborů
 .PHONY: clean
 clean:
+	make cleandoc
 	$(RM) -r $(BUILD_DIR)
+
+
+## Odstranění vygenerované dokumentace
+.PHONY: cleandoc
+cleandoc:
 	$(RM) -r $(DOC_DIR)
 
 ## Zobrazení počtu řádků
@@ -76,17 +83,14 @@ $(BUILD_DIR):
 	make depend
 	$(MKDIR) -p $(BUILD_DIR)
 
-## Programy  | $(BUILD_DIR)
-$(BUILD_DIR)/%: $(BUILD_DIR)/%.o $(OBJECT_FILES) | $(BUILD_DIR)
-	$(CXX) $(LDFLAGS) $^ -o $@ $(LDLIBS) $(CPPLIBS)
+## Programy
+compile: $(OBJECT_FILES)
+	$(CXX) $(LDFLAGS) $^ -o $(BUILD_DIR)/main $(LDLIBS) $(CPPLIBS)
 
-## Moduly  | $(BUILD_DIR)
+## Moduly
 $(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp
 	${MKDIR} -p ${DIRECTORIES}
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@ $(CPPLIBS)
-
-# Závislosti (vygenerováno: g++ -MM src/**/*.cpp)
-## Třídy
 
 ## Moduly
 include .depend
