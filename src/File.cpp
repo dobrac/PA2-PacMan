@@ -11,8 +11,8 @@
 #include <fstream>
 #include <sstream>
 
-const std::string File::MAPS_LOCATION("maps/");
-const std::string File::SETTINGS_LOCATION("./");
+const std::string File::MAPS_LOCATION("examples/maps/");
+const std::string File::SETTINGS_LOCATION("examples/");
 
 GameBoard File::loadBoard(const std::string &mapName) {
     GameBoard board;
