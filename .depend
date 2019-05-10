@@ -1,4 +1,5 @@
 Console.o: src/Console.cpp src/Console.h
+Random.o: src/Random.cpp src/Random.h
 ArrowQueue.o: src/ArrowQueue.cpp src/ArrowQueue.h src/Pos.h src/Console.h
 Game.o: src/Game.cpp src/Game.h src/Console.h src/Pos.h \
  src/Entities/Entity.h src/Entities/Players/Player.h \
@@ -98,7 +99,8 @@ RandomMotion.o: src/Entities/Players/Heuristics/RandomMotion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
- src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Random.h
 Motion.o: src/Entities/Players/Heuristics/Motion.cpp \
  src/Entities/Players/Heuristics/Motion.h \
  src/Entities/Players/Heuristics/../Player.h \
@@ -131,7 +133,8 @@ CompletelyRandomMotion.o: \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
- src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Random.h
 Player.o: src/Entities/Players/Player.cpp src/Entities/Players/Player.h \
  src/Entities/Players/../Entity.h src/Entities/Players/../../Pos.h \
  src/Entities/Players/../../Timer.h
@@ -255,7 +258,8 @@ GameBoard.o: src/Game/GameBoard.cpp src/Game/GameBoard.h \
  src/Game/../Exceptions/ExceptionPosNotFound.h \
  src/Game/../Entities/Players/GhostYellow.h \
  src/Game/../Entities/Players/GhostRed.h \
- src/Game/../Modes/InvincibleMode.h src/Game/../Entities/Cherry.h
+ src/Game/../Modes/InvincibleMode.h src/Game/../Entities/Cherry.h \
+ src/Game/../Random.h
 GameMap.o: src/Game/GameMap.cpp src/Game/GameMap.h \
  src/Game/../ArrowQueue.h src/Game/../Pos.h src/Game/../Entities/Entity.h \
  src/Game/../Exceptions/ExceptionPosNotFound.h

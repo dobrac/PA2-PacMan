@@ -4,6 +4,7 @@
 #include "../Entities/Players/GhostRed.h"
 #include "../Modes/InvincibleMode.h"
 #include "../Entities/Cherry.h"
+#include "../Random.h"
 
 void GameBoard::addPointsMax(int count) {
     m_PointsMax += count;
@@ -109,8 +110,8 @@ void GameBoard::spawnCherry() {
     if (((int) getGameLength()) % 60 != 0 || getGameLength() < 10)
         return;
 
-    int ranX = rand() % (getX() - 1) + 0;
-    int ranY = rand() % (getY() - 1) + 0;
+    int ranX = Random::getInt(0, getX() - 1);
+    int ranY = Random::getInt(0, getY() - 1);
     Pos ranPos(ranX, ranY);
 
     std::shared_ptr<Entity> entity = getScreenAt(ranPos);

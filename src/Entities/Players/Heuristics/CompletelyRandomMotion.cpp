@@ -1,6 +1,7 @@
 #include "CompletelyRandomMotion.h"
 
 #include "../../../Game/GameWorld.h"
+#include "../../../Random.h"
 #include <vector>
 
 // Completely random potion
@@ -26,8 +27,8 @@ bool CompletelyRandomMotion::chase(GameWorld &world, Player *ghost) {
     if (directions.empty())
         return false;
 
-    /* generate secret number between 1 and 10: */
-    int ran = rand() % directions.size() + 0;
+    /* generate secret number between directions.size() and 0: */
+    int ran = Random::getInt(0, directions.size() - 1);
 
     const Pos &dest = directions[ran]->getPos();
 

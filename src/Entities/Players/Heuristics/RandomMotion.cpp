@@ -1,6 +1,7 @@
 #include "RandomMotion.h"
 
 #include "../../../Game/GameWorld.h"
+#include "../../../Random.h"
 #include <vector>
 
 // Random motion (goes straight)
@@ -42,7 +43,7 @@ bool RandomMotion::chase(GameWorld &world, Player *ghost) {
     }
 
     /* generate secret number between directions.size() and 0: */
-    int ran = rand() % directions.size() + 0;
+    int ran = Random::getInt(0, directions.size() - 1);
 
     const Pos &dest = directions[ran]->getPos(); // Random destination
 
