@@ -13,8 +13,10 @@ bool ScatterMotion::chase(GameWorld &world, Player *ghost) {
 
     const Pos &nextPos = findNextPos(world, ghost->getPos(), ghost->getDefaultPos());
 
-    if (nextPos != Pos(0, 0))
+    if (nextPos != Pos(0, 0)) {
         ghost->setPos(nextPos);
+        return true;
+    }
 
-    return true;
+    return false;
 }

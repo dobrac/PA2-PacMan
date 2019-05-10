@@ -2,6 +2,7 @@
 #include "../Entities/Players/GhostYellow.h"
 #include "../Entities/Players/GhostRed.h"
 #include "../Entities/Players/GhostBlue.h"
+#include "../Entities/Players/GhostGreen.h"
 
 void GameWorld::setPacMan(const PacMan &pacman) {
     m_PacMan = pacman;
@@ -21,9 +22,10 @@ PacMan &GameWorld::getPacMan() {
 }
 
 void GameWorld::initializeGhosts(const Pos &pos) {
-    addGhost(std::make_shared<GhostYellow>(GhostYellow(pos, 200)));
-    addGhost(std::make_shared<GhostRed>(GhostRed(pos, 250)));
+    addGhost(std::make_shared<GhostYellow>(GhostYellow(pos, 150)));
+    addGhost(std::make_shared<GhostRed>(GhostRed(pos, 200)));
     addGhost(std::make_shared<GhostBlue>(GhostBlue(pos, 300)));
+    addGhost(std::make_shared<GhostGreen>(GhostGreen(pos, 200)));
 }
 
 const PacMan &GameWorld::getPacMan() const {

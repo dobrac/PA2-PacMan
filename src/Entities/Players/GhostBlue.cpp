@@ -26,7 +26,7 @@ bool GhostBlue::chase(GameWorld &world) {
 }
 
 bool GhostBlue::frightened(GameWorld &world) {
-    if (checkTimerMove(world.getPacMan().getSpeed() * 2))
+    if (checkTimerMove(world.getPacMan().getSpeed() * 3))
         return m_MotionFrightened->chase(world, this);
     else
         return false;

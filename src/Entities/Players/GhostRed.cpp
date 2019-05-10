@@ -1,6 +1,5 @@
 #include "GhostRed.h"
 
-#include "Heuristics/CompletelyRandomMotion.h"
 #include "Heuristics/RandomMotion.h"
 
 #include "../../Game/GameBoard.h"
@@ -27,7 +26,7 @@ bool GhostRed::chase(GameWorld &world) {
 }
 
 bool GhostRed::frightened(GameWorld &world) {
-    if (checkTimerMove(world.getPacMan().getSpeed()*2))
+    if (checkTimerMove(world.getPacMan().getSpeed() * 3))
         return m_MotionFrightened->chase(world, this);
     else
         return false;
