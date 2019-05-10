@@ -12,6 +12,8 @@ public:
 
     const Pos &getVec() const;
 
+    const Pos &getDefaultPos() const;
+
     Pos getDirection() const;
 
     Timer<Timer_Type_Millisecond> & getTimer();

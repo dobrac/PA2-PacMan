@@ -1,0 +1,5 @@
+Prohlašuji, že tuto semestrální práci jsem vytvořil sám, odnikud nezkopíroval, a případné části kódu,
+které jsou vypůjčené z jiných zdrojů nebo knihovny, jsou řádně okomentované a označené,
+včetně uvedení zdroje.
+
+Jakub Dobrý, dobryjak, 2018/2019 FIT ČVUT

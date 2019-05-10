@@ -20,3 +20,10 @@ bool Ghost::follow(GameWorld &world) {
     else
         return false;
 }
+
+bool Ghost::scatter(GameWorld &world) {
+    if (checkTimerMove())
+        return m_MotionScatter.chase(world, this);
+    else
+        return false;
+}

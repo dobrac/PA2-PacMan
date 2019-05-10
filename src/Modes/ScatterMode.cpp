@@ -1,14 +1,14 @@
-#include "NormalMode.h"
+#include "ScatterMode.h"
 
 #include "../Game/GameBoard.h"
 
-bool NormalMode::update(GameBoard & board) {
+bool ScatterMode::update(GameBoard &board) {
     bool shouldUpdate = false;
 
     if (board.isStarted()) {
         // Move Ghosts
         for (auto &ghost : board.getGhosts()) {
-            if (ghost->chase(board)) {
+            if (ghost->scatter(board)) {
                 shouldUpdate = true;
             }
         }
@@ -26,10 +26,10 @@ bool NormalMode::update(GameBoard & board) {
     return shouldUpdate;
 }
 
-std::string NormalMode::print() const {
-    return "Normal";
+std::string ScatterMode::print() const {
+    return "Scatter";
 }
 
-Mode::ModeType NormalMode::getType() const {
-    return MNormal;
+Mode::ModeType ScatterMode::getType() const {
+    return MScatter;
 }

@@ -14,26 +14,16 @@ bool InvincibleMode::update(GameBoard & board) {
         }
     }
 
-    solveConflicts(board);
+    solveConflictsKill(board);
 
     // Move PacMan
     if (board.getPacMan().move(board)) {
         shouldUpdate = true;
     }
 
-    solveConflicts(board);
+    solveConflictsKill(board);
 
     return shouldUpdate;
-}
-
-bool InvincibleMode::solveConflicts(GameBoard & board) {
-    for (auto &ghost : board.getGhosts()) {
-        if (ghost->getPos() == board.getPacMan().getPos()) {
-            ghost->setVec({0,0});
-            ghost->resetPos();
-        }
-    }
-    return false;
 }
 
 std::string InvincibleMode::print() const {

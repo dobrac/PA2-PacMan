@@ -44,3 +44,7 @@ bool Player::checkTimerMove(int speed) {
         return true;
     }
 }
+
+const Pos &Player::getDefaultPos() const {
+    return m_DefaultPos;
+}
