@@ -33,3 +33,7 @@ std::string InvincibleMode::print() const {
 Mode::ModeType InvincibleMode::getType() const {
     return MInvincible;
 }
+
+InvincibleMode::InvincibleMode(int length) : Mode(length) {
+
+}

@@ -37,10 +37,10 @@ void Game::showScore() const {
 
     print("Mode: ");
     print(getBoard().getGameMode()->print());
-    if (getBoard().getTimeChangeMode() != -1) {
+    if (getBoard().getRemainingTimeMode() != -1) {
         print(" | ");
         print("Next change: ");
-        print(std::to_string(getBoard().getTimeChangeMode()) + "s");
+        print(std::to_string(getBoard().getRemainingTimeMode()) + "s");
     }
     printLine();
 

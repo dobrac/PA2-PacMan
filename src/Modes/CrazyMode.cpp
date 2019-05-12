@@ -33,3 +33,7 @@ std::string CrazyMode::print() const {
 Mode::ModeType CrazyMode::getType() const {
     return MCrazy;
 }
+
+CrazyMode::CrazyMode(int length) : Mode(length) {
+
+}

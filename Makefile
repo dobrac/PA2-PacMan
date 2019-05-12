@@ -2,8 +2,10 @@
 # Konstanty
 CXX ?= g++
 CXXFLAGS ?= -std=c++14
-CPPFLAGS ?= -Wall -pedantic -Wextra -g
-CPPLIBS ?= -fsanitize=address
+CPPFLAGS ?= -Wall -pedantic -Wextra
+# -g
+CPPLIBS ?=
+#-fsanitize=address
 
 MKDIR ?= mkdir
 RM ?= rm

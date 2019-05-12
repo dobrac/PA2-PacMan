@@ -4,6 +4,8 @@
 
 class ScatterMode : public Mode {
 public:
+    ScatterMode(int length);
+
     bool update(GameBoard &board) override;
 
     ModeType getType() const override;

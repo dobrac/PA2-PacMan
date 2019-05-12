@@ -13,7 +13,7 @@ GhostGreen::GhostGreen(const Pos &pos, int speed)
 }
 
 std::string GhostGreen::print(const GameBoard &board) const {
-    if (board.isFrightened()) {
+    if (board.isInvincible()) {
         return "A";
     }
     return "G";

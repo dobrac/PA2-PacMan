@@ -2,11 +2,12 @@
 
 #include "../ArrowQueue.h"
 #include "../Entities/Entity.h"
+#include "GameSettings.h"
 #include <memory>
 #include <vector>
 #include <map>
 
-class GameMap {
+class GameMap : public GameSettings {
 public:
     void addScreen(const std::shared_ptr<Entity> &entity);
 

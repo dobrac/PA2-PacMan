@@ -41,7 +41,7 @@ std::string PacMan::print(const GameBoard &board) const {
     else if (m_Vec == Pos(0, -1))
         return "↑";
     else*/
-    if (board.isFrightened()) {
+    if (board.isInvincible()) {
         return "C";
     }
 
@@ -61,22 +61,5 @@ bool PacMan::setMovePos(GameBoard &board) {
 
     m_Position = getDirection();
     return true;
-
-    /*if (ent->getType() == EEmpty) {
-         m_Position = getDirection();
-         return true;
-     }
-     if (ent->getType() == EPoint || ent->getType() == ECherry || ent->getType() == EBonus) {
-         board.removeScreenAt(getDirection());
-         board.addScreen(std::make_shared<Empty>(Empty(getDirection())));
-         m_Position = getDirection();
-         if (ent->getType() == EBonus) {
-             board.runInvincibleMode();
-         } else if (ent->getType() == EPoint) {
-             board.addPointsGot(1);
-         }
-         return true;
-     }
-    return false;*/
 }
 

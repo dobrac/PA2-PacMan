@@ -33,3 +33,7 @@ std::string NormalMode::print() const {
 Mode::ModeType NormalMode::getType() const {
     return MNormal;
 }
+
+NormalMode::NormalMode(int length) : Mode(length) {
+
+}

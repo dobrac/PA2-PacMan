@@ -17,7 +17,7 @@ const std::string File::SETTINGS_LOCATION("examples/");
 GameBoard File::loadBoard(const std::string &mapName) {
     GameBoard board;
 
-    board.setSettings(File::loadSettings("settings"));
+    File::loadSettings("settings", board);
 
     std::string line;
     std::ifstream myfile(MAPS_LOCATION + mapName + ".pacmap");
@@ -37,6 +37,7 @@ GameBoard File::loadBoard(const std::string &mapName) {
                     board.addScreen(std::make_shared<Border>(Border({x, y})));
                 } else if (it == '%') {
                     board.addScreen(std::make_shared<Bonus>(Bonus({x, y})));
+                    board.addPointsMax(1);
                 } else if (it == 'C') {
                     board.setPacMan(PacMan({x, y}));
                     board.addScreen(std::make_shared<Empty>(Empty({x, y})));
@@ -94,11 +95,9 @@ bool File::integrityCheck(GameMap &map) {
     return true;
 }
 
-Settings File::loadSettings(const std::string &fileName) {
+bool File::loadSettings(const std::string &fileName, GameBoard & board) {
     std::string line;
     std::ifstream myfile(SETTINGS_LOCATION + fileName + ".pacset");
-
-    Settings set;
 
     if (myfile.is_open()) {
         while (getline(myfile, line)) {
@@ -111,20 +110,20 @@ Settings File::loadSettings(const std::string &fileName) {
             }
 
             if (key == "Difficulty:") {
-                auto mapDifficulties = Settings::getDifficulties();
+                auto mapDifficulties = GameSettings::getDifficulties();
                 auto valueDifficulties = mapDifficulties.find(word);
                 if (valueDifficulties != mapDifficulties.end()) {
-                    set.setDifficulty(valueDifficulties->second);
+                    board.setDefaultDifficulty(valueDifficulties->second);
                     Console::printLine("Loading Difficulty: " + std::to_string(valueDifficulties->second));
                     continue;
                 }
             }
 
             if (key == "GameMode:") {
-                auto mapGameModes = Settings::getGameModes();
+                auto mapGameModes = GameSettings::getModes();
                 auto valueGameModes = mapGameModes.find(word);
                 if (valueGameModes != mapGameModes.end()) {
-                    set.setGameMode(valueGameModes->second);
+                    board.setDefaultMode(valueGameModes->second);
                     Console::printLine("Loading GameMode: " + std::to_string(valueGameModes->second->getType()));
                     continue;
                 }
@@ -133,8 +132,9 @@ Settings File::loadSettings(const std::string &fileName) {
         myfile.close();
 
     } else {
+        return false;
         //throw ExceptionWrongSettingFormat();
     }
 
-    return set;
+    return true;
 }

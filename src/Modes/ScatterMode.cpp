@@ -33,3 +33,6 @@ std::string ScatterMode::print() const {
 Mode::ModeType ScatterMode::getType() const {
     return MScatter;
 }
+
+ScatterMode::ScatterMode(int length) : Mode(length) {
+}

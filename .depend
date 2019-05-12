@@ -9,83 +9,80 @@ Game.o: src/Game.cpp src/Game.h src/Console.h src/Pos.h \
  src/Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
- src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/../Modes/Mode.h \
- src/Game/../Modes/NormalMode.h src/Game/../Settings.h \
- src/Entities/Border.h src/Entities/Point.h src/File.h \
- src/Exceptions/ExceptionWrongMapFormat.h
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
+ src/Game/GameMode.h src/Entities/Border.h src/Entities/Point.h \
+ src/File.h src/Exceptions/ExceptionWrongMapFormat.h
 Timer.o: src/Timer.cpp src/Timer.h
 ScatterMode.o: src/Modes/ScatterMode.cpp src/Modes/ScatterMode.h \
- src/Modes/Mode.h src/Modes/../Game/GameBoard.h \
+ src/Modes/Mode.h src/Modes/../Timer.h src/Modes/../Game/GameBoard.h \
  src/Modes/../Game/GameWorld.h \
  src/Modes/../Game/../Entities/Players/PacMan.h \
  src/Modes/../Game/../Entities/Players/Player.h \
  src/Modes/../Game/../Entities/Players/../Entity.h \
  src/Modes/../Game/../Entities/Players/../../Pos.h \
- src/Modes/../Game/../Entities/Players/../../Timer.h \
  src/Modes/../Game/../Entities/Players/Ghost.h \
  src/Modes/../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Modes/../Game/GameMap.h src/Modes/../Game/../ArrowQueue.h \
- src/Modes/../Game/../Modes/NormalMode.h src/Modes/../Game/../Settings.h
-Mode.o: src/Modes/Mode.cpp src/Modes/Mode.h src/Modes/../Game/GameBoard.h \
- src/Modes/../Game/GameWorld.h \
+ src/Modes/../Game/GameSettings.h src/Modes/../Game/../Modes/NormalMode.h \
+ src/Modes/../Game/GameMode.h
+Mode.o: src/Modes/Mode.cpp src/Modes/Mode.h src/Modes/../Timer.h \
+ src/Modes/../Game/GameBoard.h src/Modes/../Game/GameWorld.h \
  src/Modes/../Game/../Entities/Players/PacMan.h \
  src/Modes/../Game/../Entities/Players/Player.h \
  src/Modes/../Game/../Entities/Players/../Entity.h \
  src/Modes/../Game/../Entities/Players/../../Pos.h \
- src/Modes/../Game/../Entities/Players/../../Timer.h \
  src/Modes/../Game/../Entities/Players/Ghost.h \
  src/Modes/../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Modes/../Game/GameMap.h src/Modes/../Game/../ArrowQueue.h \
- src/Modes/../Game/../Modes/NormalMode.h src/Modes/../Game/../Settings.h
+ src/Modes/../Game/GameSettings.h src/Modes/../Game/../Modes/NormalMode.h \
+ src/Modes/../Game/GameMode.h
 CrazyMode.o: src/Modes/CrazyMode.cpp src/Modes/CrazyMode.h \
- src/Modes/Mode.h src/Modes/../Game/GameBoard.h \
+ src/Modes/Mode.h src/Modes/../Timer.h src/Modes/../Game/GameBoard.h \
  src/Modes/../Game/GameWorld.h \
  src/Modes/../Game/../Entities/Players/PacMan.h \
  src/Modes/../Game/../Entities/Players/Player.h \
  src/Modes/../Game/../Entities/Players/../Entity.h \
  src/Modes/../Game/../Entities/Players/../../Pos.h \
- src/Modes/../Game/../Entities/Players/../../Timer.h \
  src/Modes/../Game/../Entities/Players/Ghost.h \
  src/Modes/../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Modes/../Game/GameMap.h src/Modes/../Game/../ArrowQueue.h \
- src/Modes/../Game/../Modes/NormalMode.h src/Modes/../Game/../Settings.h
+ src/Modes/../Game/GameSettings.h src/Modes/../Game/../Modes/NormalMode.h \
+ src/Modes/../Game/GameMode.h
 NormalMode.o: src/Modes/NormalMode.cpp src/Modes/NormalMode.h \
- src/Modes/Mode.h src/Modes/../Game/GameBoard.h \
+ src/Modes/Mode.h src/Modes/../Timer.h src/Modes/../Game/GameBoard.h \
  src/Modes/../Game/GameWorld.h \
  src/Modes/../Game/../Entities/Players/PacMan.h \
  src/Modes/../Game/../Entities/Players/Player.h \
  src/Modes/../Game/../Entities/Players/../Entity.h \
  src/Modes/../Game/../Entities/Players/../../Pos.h \
- src/Modes/../Game/../Entities/Players/../../Timer.h \
  src/Modes/../Game/../Entities/Players/Ghost.h \
  src/Modes/../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Modes/../Game/GameMap.h src/Modes/../Game/../ArrowQueue.h \
- src/Modes/../Game/../Settings.h
+ src/Modes/../Game/GameSettings.h src/Modes/../Game/GameMode.h
 InvincibleMode.o: src/Modes/InvincibleMode.cpp src/Modes/InvincibleMode.h \
- src/Modes/Mode.h src/Modes/../Game/GameBoard.h \
+ src/Modes/Mode.h src/Modes/../Timer.h src/Modes/../Game/GameBoard.h \
  src/Modes/../Game/GameWorld.h \
  src/Modes/../Game/../Entities/Players/PacMan.h \
  src/Modes/../Game/../Entities/Players/Player.h \
  src/Modes/../Game/../Entities/Players/../Entity.h \
  src/Modes/../Game/../Entities/Players/../../Pos.h \
- src/Modes/../Game/../Entities/Players/../../Timer.h \
  src/Modes/../Game/../Entities/Players/Ghost.h \
  src/Modes/../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Modes/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Modes/../Game/GameMap.h src/Modes/../Game/../ArrowQueue.h \
- src/Modes/../Game/../Modes/NormalMode.h src/Modes/../Game/../Settings.h
+ src/Modes/../Game/GameSettings.h src/Modes/../Game/../Modes/NormalMode.h \
+ src/Modes/../Game/GameMode.h
 Pos.o: src/Pos.cpp src/Pos.h
-Settings.o: src/Settings.cpp src/Settings.h src/Modes/Mode.h \
- src/Modes/NormalMode.h src/Modes/InvincibleMode.h src/Modes/CrazyMode.h
 Border.o: src/Entities/Border.cpp src/Entities/Border.h \
  src/Entities/Entity.h src/Entities/../Pos.h
 PacMan.o: src/Entities/Players/PacMan.cpp src/Entities/Players/PacMan.h \
@@ -100,9 +97,10 @@ PacMan.o: src/Entities/Players/PacMan.cpp src/Entities/Players/PacMan.h \
  src/Entities/Players/../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
  src/Entities/Players/../../Game/../Modes/Mode.h \
  src/Entities/Players/../../Game/../Modes/NormalMode.h \
- src/Entities/Players/../../Game/../Settings.h
+ src/Entities/Players/../../Game/GameMode.h
 GhostYellow.o: src/Entities/Players/GhostYellow.cpp \
  src/Entities/Players/GhostYellow.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
@@ -116,9 +114,10 @@ GhostYellow.o: src/Entities/Players/GhostYellow.cpp \
  src/Entities/Players/../../Game/GameWorld.h \
  src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
  src/Entities/Players/../../Game/../Modes/Mode.h \
  src/Entities/Players/../../Game/../Modes/NormalMode.h \
- src/Entities/Players/../../Game/../Settings.h
+ src/Entities/Players/../../Game/GameMode.h
 RandomMotion.o: src/Entities/Players/Heuristics/RandomMotion.cpp \
  src/Entities/Players/Heuristics/RandomMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
@@ -133,6 +132,9 @@ RandomMotion.o: src/Entities/Players/Heuristics/RandomMotion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h \
  src/Entities/Players/Heuristics/../../../Random.h
 Motion.o: src/Entities/Players/Heuristics/Motion.cpp \
  src/Entities/Players/Heuristics/Motion.h \
@@ -146,7 +148,10 @@ Motion.o: src/Entities/Players/Heuristics/Motion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
- src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h
 FollowMotion.o: src/Entities/Players/Heuristics/FollowMotion.cpp \
  src/Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
@@ -159,7 +164,27 @@ FollowMotion.o: src/Entities/Players/Heuristics/FollowMotion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
- src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h
+AheadMotion.o: src/Entities/Players/Heuristics/AheadMotion.cpp \
+ src/Entities/Players/Heuristics/AheadMotion.h \
+ src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/../Player.h \
+ src/Entities/Players/Heuristics/../../Entity.h \
+ src/Entities/Players/Heuristics/../../../Pos.h \
+ src/Entities/Players/Heuristics/../../../Timer.h \
+ src/Entities/Players/Heuristics/../PacMan.h \
+ src/Entities/Players/Heuristics/../../../Game/GameWorld.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Ghost.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/FollowMotion.h \
+ src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
+ src/Entities/Players/Heuristics/../../../Game/GameMap.h \
+ src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h
 CompletelyRandomMotion.o: \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.cpp \
  src/Entities/Players/Heuristics/CompletelyRandomMotion.h \
@@ -175,6 +200,9 @@ CompletelyRandomMotion.o: \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h \
  src/Entities/Players/Heuristics/../../../Random.h
 ScatterMotion.o: src/Entities/Players/Heuristics/ScatterMotion.cpp \
  src/Entities/Players/Heuristics/ScatterMotion.h \
@@ -189,10 +217,31 @@ ScatterMotion.o: src/Entities/Players/Heuristics/ScatterMotion.cpp \
  src/Entities/Players/Heuristics/../../../Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/../../../Game/GameMap.h \
  src/Entities/Players/Heuristics/../../../Game/../ArrowQueue.h \
+ src/Entities/Players/Heuristics/../../../Game/GameSettings.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/Mode.h \
+ src/Entities/Players/Heuristics/../../../Game/../Modes/NormalMode.h \
  src/Entities/Players/Heuristics/../../../Random.h
 Player.o: src/Entities/Players/Player.cpp src/Entities/Players/Player.h \
  src/Entities/Players/../Entity.h src/Entities/Players/../../Pos.h \
  src/Entities/Players/../../Timer.h
+GhostGreen.o: src/Entities/Players/GhostGreen.cpp \
+ src/Entities/Players/GhostGreen.h src/Entities/Players/Ghost.h \
+ src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
+ src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
+ src/Entities/Players/PacMan.h \
+ src/Entities/Players/Heuristics/FollowMotion.h \
+ src/Entities/Players/Heuristics/Motion.h \
+ src/Entities/Players/Heuristics/ScatterMotion.h \
+ src/Entities/Players/Heuristics/RandomMotion.h \
+ src/Entities/Players/../../Game/GameBoard.h \
+ src/Entities/Players/../../Game/GameWorld.h \
+ src/Entities/Players/../../Game/GameMap.h \
+ src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
+ src/Entities/Players/../../Game/../Modes/Mode.h \
+ src/Entities/Players/../../Game/../Modes/NormalMode.h \
+ src/Entities/Players/../../Game/GameMode.h \
+ src/Entities/Players/Heuristics/AheadMotion.h
 GhostBlue.o: src/Entities/Players/GhostBlue.cpp \
  src/Entities/Players/GhostBlue.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
@@ -206,9 +255,10 @@ GhostBlue.o: src/Entities/Players/GhostBlue.cpp \
  src/Entities/Players/../../Game/GameWorld.h \
  src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
  src/Entities/Players/../../Game/../Modes/Mode.h \
  src/Entities/Players/../../Game/../Modes/NormalMode.h \
- src/Entities/Players/../../Game/../Settings.h
+ src/Entities/Players/../../Game/GameMode.h
 GhostRed.o: src/Entities/Players/GhostRed.cpp \
  src/Entities/Players/GhostRed.h src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
@@ -217,15 +267,15 @@ GhostRed.o: src/Entities/Players/GhostRed.cpp \
  src/Entities/Players/Heuristics/FollowMotion.h \
  src/Entities/Players/Heuristics/Motion.h \
  src/Entities/Players/Heuristics/ScatterMotion.h \
- src/Entities/Players/Heuristics/CompletelyRandomMotion.h \
  src/Entities/Players/Heuristics/RandomMotion.h \
  src/Entities/Players/../../Game/GameBoard.h \
  src/Entities/Players/../../Game/GameWorld.h \
  src/Entities/Players/../../Game/GameMap.h \
  src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
  src/Entities/Players/../../Game/../Modes/Mode.h \
  src/Entities/Players/../../Game/../Modes/NormalMode.h \
- src/Entities/Players/../../Game/../Settings.h
+ src/Entities/Players/../../Game/GameMode.h
 Ghost.o: src/Entities/Players/Ghost.cpp src/Entities/Players/Ghost.h \
  src/Entities/Players/Player.h src/Entities/Players/../Entity.h \
  src/Entities/Players/../../Pos.h src/Entities/Players/../../Timer.h \
@@ -235,7 +285,10 @@ Ghost.o: src/Entities/Players/Ghost.cpp src/Entities/Players/Ghost.h \
  src/Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/Players/../../Game/GameWorld.h \
  src/Entities/Players/../../Game/GameMap.h \
- src/Entities/Players/../../Game/../ArrowQueue.h
+ src/Entities/Players/../../Game/../ArrowQueue.h \
+ src/Entities/Players/../../Game/GameSettings.h \
+ src/Entities/Players/../../Game/../Modes/Mode.h \
+ src/Entities/Players/../../Game/../Modes/NormalMode.h
 Bonus.o: src/Entities/Bonus.cpp src/Entities/Bonus.h \
  src/Entities/Entity.h src/Entities/../Pos.h \
  src/Entities/../Game/GameBoard.h src/Entities/../Game/GameWorld.h \
@@ -247,9 +300,9 @@ Bonus.o: src/Entities/Bonus.cpp src/Entities/Bonus.h \
  src/Entities/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Entities/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h \
- src/Entities/../Game/../Modes/Mode.h \
+ src/Entities/../Game/GameSettings.h src/Entities/../Game/../Modes/Mode.h \
  src/Entities/../Game/../Modes/NormalMode.h \
- src/Entities/../Game/../Settings.h src/Entities/Empty.h
+ src/Entities/../Game/GameMode.h src/Entities/Empty.h
 Entity.o: src/Entities/Entity.cpp src/Entities/Entity.h \
  src/Entities/../Pos.h
 Empty.o: src/Entities/Empty.cpp src/Entities/Empty.h \
@@ -265,9 +318,9 @@ Cherry.o: src/Entities/Cherry.cpp src/Entities/Cherry.h \
  src/Entities/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Entities/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h \
- src/Entities/../Game/../Modes/Mode.h \
+ src/Entities/../Game/GameSettings.h src/Entities/../Game/../Modes/Mode.h \
  src/Entities/../Game/../Modes/NormalMode.h \
- src/Entities/../Game/../Settings.h src/Entities/Empty.h
+ src/Entities/../Game/GameMode.h src/Entities/Empty.h
 Point.o: src/Entities/Point.cpp src/Entities/Point.h \
  src/Entities/Entity.h src/Entities/../Pos.h \
  src/Entities/../Game/GameBoard.h src/Entities/../Game/GameWorld.h \
@@ -279,9 +332,9 @@ Point.o: src/Entities/Point.cpp src/Entities/Point.h \
  src/Entities/../Game/../Entities/Players/Heuristics/Motion.h \
  src/Entities/../Game/../Entities/Players/Heuristics/ScatterMotion.h \
  src/Entities/../Game/GameMap.h src/Entities/../Game/../ArrowQueue.h \
- src/Entities/../Game/../Modes/Mode.h \
+ src/Entities/../Game/GameSettings.h src/Entities/../Game/../Modes/Mode.h \
  src/Entities/../Game/../Modes/NormalMode.h \
- src/Entities/../Game/../Settings.h src/Entities/Empty.h
+ src/Entities/../Game/GameMode.h src/Entities/Empty.h
 File.o: src/File.cpp src/File.h src/Game/GameBoard.h src/Game/GameWorld.h \
  src/Game/../Entities/Players/PacMan.h \
  src/Game/../Entities/Players/Player.h \
@@ -292,11 +345,12 @@ File.o: src/File.cpp src/File.h src/Game/GameBoard.h src/Game/GameWorld.h \
  src/Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
- src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/../Modes/Mode.h \
- src/Game/../Modes/NormalMode.h src/Game/../Settings.h \
- src/Entities/Border.h src/Entities/Point.h src/Entities/Empty.h \
- src/Exceptions/ExceptionWrongMapFormat.h src/Entities/Bonus.h \
- src/Exceptions/ExceptionWrongSettingFormat.h src/Console.h
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
+ src/Game/GameMode.h src/Entities/Border.h src/Entities/Point.h \
+ src/Entities/Empty.h src/Exceptions/ExceptionWrongMapFormat.h \
+ src/Entities/Bonus.h src/Exceptions/ExceptionWrongSettingFormat.h \
+ src/Console.h
 main.o: src/main.cpp src/Game.h src/Console.h src/Pos.h \
  src/Entities/Entity.h src/Entities/Players/Player.h \
  src/Entities/Players/../../Timer.h src/Entities/Players/PacMan.h \
@@ -305,8 +359,9 @@ main.o: src/main.cpp src/Game.h src/Console.h src/Pos.h \
  src/Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
- src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/../Modes/Mode.h \
- src/Game/../Modes/NormalMode.h src/Game/../Settings.h
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
+ src/Game/GameMode.h
 GameBoard.o: src/Game/GameBoard.cpp src/Game/GameBoard.h \
  src/Game/GameWorld.h src/Game/../Entities/Players/PacMan.h \
  src/Game/../Entities/Players/Player.h \
@@ -317,15 +372,17 @@ GameBoard.o: src/Game/GameBoard.cpp src/Game/GameBoard.h \
  src/Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
- src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/../Modes/Mode.h \
- src/Game/../Modes/NormalMode.h src/Game/../Settings.h \
- src/Game/../Exceptions/ExceptionPosNotFound.h \
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
+ src/Game/GameMode.h src/Game/../Exceptions/ExceptionPosNotFound.h \
  src/Game/../Entities/Players/GhostYellow.h \
  src/Game/../Entities/Players/GhostRed.h \
  src/Game/../Modes/InvincibleMode.h src/Game/../Entities/Cherry.h \
  src/Game/../Random.h
 GameMap.o: src/Game/GameMap.cpp src/Game/GameMap.h \
  src/Game/../ArrowQueue.h src/Game/../Pos.h src/Game/../Entities/Entity.h \
+ src/Game/GameSettings.h src/Game/../Modes/Mode.h \
+ src/Game/../Modes/../Timer.h src/Game/../Modes/NormalMode.h \
  src/Game/../Exceptions/ExceptionPosNotFound.h
 GameWorld.o: src/Game/GameWorld.cpp src/Game/GameWorld.h \
  src/Game/../Entities/Players/PacMan.h \
@@ -337,7 +394,26 @@ GameWorld.o: src/Game/GameWorld.cpp src/Game/GameWorld.h \
  src/Game/../Entities/Players/Heuristics/FollowMotion.h \
  src/Game/../Entities/Players/Heuristics/Motion.h \
  src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
- src/Game/GameMap.h src/Game/../ArrowQueue.h \
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
  src/Game/../Entities/Players/GhostYellow.h \
  src/Game/../Entities/Players/GhostRed.h \
- src/Game/../Entities/Players/GhostBlue.h
+ src/Game/../Entities/Players/GhostBlue.h \
+ src/Game/../Entities/Players/GhostGreen.h
+GameSettings.o: src/Game/GameSettings.cpp src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/../Timer.h \
+ src/Game/../Modes/NormalMode.h src/Game/../Modes/InvincibleMode.h \
+ src/Game/../Modes/CrazyMode.h
+GameMode.o: src/Game/GameMode.cpp src/Game/GameMode.h \
+ src/Game/GameWorld.h src/Game/../Entities/Players/PacMan.h \
+ src/Game/../Entities/Players/Player.h \
+ src/Game/../Entities/Players/../Entity.h \
+ src/Game/../Entities/Players/../../Pos.h \
+ src/Game/../Entities/Players/../../Timer.h \
+ src/Game/../Entities/Players/Ghost.h \
+ src/Game/../Entities/Players/Heuristics/FollowMotion.h \
+ src/Game/../Entities/Players/Heuristics/Motion.h \
+ src/Game/../Entities/Players/Heuristics/ScatterMotion.h \
+ src/Game/GameMap.h src/Game/../ArrowQueue.h src/Game/GameSettings.h \
+ src/Game/../Modes/Mode.h src/Game/../Modes/NormalMode.h \
+ src/Game/../Modes/InvincibleMode.h
