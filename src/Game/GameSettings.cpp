@@ -45,4 +45,28 @@ double GameSettings::getGhostSpeedMultiplier() const {
     return m_GhostSpeedMultiplier;
 }
 
+void GameSettings::setCherryProbability(int probability) {
+    m_CherryProbability = probability;
+}
+
+void GameSettings::setGhostSpeedMultiplier(double multiplier) {
+    m_GhostSpeedMultiplier = multiplier;
+}
+
+void GameSettings::setInvincibleModeLength(int length) {
+    m_InvincibleModeLength = length;
+}
+
+int GameSettings::getInvincibleModeLength() const {
+    return m_InvincibleModeLength;
+}
+
+void GameSettings::setScatterModeLength(int length) {
+    m_ScatterModeLength = length;
+}
+
+int GameSettings::getScatterModeLength() const {
+    return m_ScatterModeLength;
+}
+
 

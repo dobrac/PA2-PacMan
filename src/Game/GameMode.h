@@ -58,11 +58,6 @@ public:
 
 private:
     /**
-     * Static constant for INVINCIBLE MODE length
-     */
-    static const int TIME_INVINCIBLE_MODE = 10;
-
-    /**
      * Variable for storing mode that should change on next update
      */
     std::shared_ptr<Mode> m_GameModeToChange = getDefaultMode();

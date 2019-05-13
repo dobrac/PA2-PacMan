@@ -15,7 +15,7 @@ void GameMode::runScatterMode(int time) {
 void GameMode::runInvincibleMode() {
     if (isInvincible())
         return;
-    m_GameModeToChange = std::make_shared<InvincibleMode>(InvincibleMode(TIME_INVINCIBLE_MODE));
+    m_GameModeToChange = std::make_shared<InvincibleMode>(InvincibleMode(getInvincibleModeLength()));
 }
 
 bool GameMode::isInvincible() const {

@@ -97,7 +97,7 @@ bool File::integrityCheck(GameMap &map) {
     return true;
 }
 
-bool File::loadSettings(const std::string &fileName, GameBoard & board) {
+bool File::loadSettings(const std::string &fileName, GameBoard &board) {
     std::string line;
     std::ifstream myfile(SETTINGS_LOCATION + fileName + ".pacset");
 
@@ -116,7 +116,7 @@ bool File::loadSettings(const std::string &fileName, GameBoard & board) {
                 auto valueDifficulties = mapDifficulties.find(word);
                 if (valueDifficulties != mapDifficulties.end()) {
                     board.setDefaultDifficulty(valueDifficulties->second);
-                    Console::printLine("Loading Difficulty: " + std::to_string(valueDifficulties->second));
+                    Console::printLine("Loading Difficulty: " + word);
                     continue;
                 }
             }
@@ -126,16 +126,55 @@ bool File::loadSettings(const std::string &fileName, GameBoard & board) {
                 auto valueGameModes = mapGameModes.find(word);
                 if (valueGameModes != mapGameModes.end()) {
                     board.setDefaultMode(valueGameModes->second);
-                    Console::printLine("Loading GameMode: " + std::to_string(valueGameModes->second->getType()));
+                    Console::printLine("Loading GameMode: " + word);
                     continue;
                 }
+            }
+
+            if (key == "CherryProbability:") {
+                try {
+                    board.setCherryProbability(std::stoi(word));
+                    Console::printLine("Loading CherryProbability: " + word);
+                } catch (std::invalid_argument &) {
+                } catch (std::out_of_range &) {
+                }
+                continue;
+            }
+
+            if (key == "InvincibleModeLength:") {
+                try {
+                    board.setInvincibleModeLength(std::stoi(word));
+                    Console::printLine("Loading InvincibleModeLength: " + word);
+                } catch (std::invalid_argument &) {
+                } catch (std::out_of_range &) {
+                }
+                continue;
+            }
+
+            if (key == "ScatterModeLength:") {
+                try {
+                    board.setScatterModeLength(std::stoi(word));
+                    Console::printLine("Loading ScatterModeLength: " + word);
+                } catch (std::invalid_argument &) {
+                } catch (std::out_of_range &) {
+                }
+                continue;
+            }
+
+            if (key == "GhostSpeedIncrement:") {
+                try {
+                    board.setGhostSpeedMultiplier(std::stod(word));
+                    Console::printLine("Loading GhostSpeedIncrement: " + word);
+                } catch (std::invalid_argument &) {
+                } catch (std::out_of_range &) {
+                }
+                continue;
             }
         }
         myfile.close();
 
     } else {
         return false;
-        //throw ExceptionWrongSettingFormat();
     }
 
     return true;

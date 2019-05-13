@@ -56,16 +56,52 @@ public:
     static std::map<std::string, std::shared_ptr<Mode>> getModes();
 
     /**
+     * Set Cherry spawn probability
+     * @param probability probability to set
+     */
+    void setCherryProbability(int probability);
+
+    /**
      * Get Cherry spawn probability
      * @return probability max range
      */
     int getCherryProbability() const;
 
     /**
+     * Set Ghost speed multiplier
+     * @param multiplier multiplier to set
+     */
+    void setGhostSpeedMultiplier(double multiplier);
+
+    /**
      * Get Ghost speed multiplier
      * @return multiplier
      */
     double getGhostSpeedMultiplier() const;
+
+    /**
+     * Set Invincible Mode length
+     * @param length length to set in seconds
+     */
+    void setInvincibleModeLength(int length);
+
+    /**
+     * Get Invincible Mode length
+     * @return mode length in seconds
+     */
+    int getInvincibleModeLength() const;
+
+    /**
+     * Set Scatter Mode length
+     * @param length length to set in seconds
+     */
+    void setScatterModeLength(int length);
+
+    /**
+     *  Get Scatter Mode length
+     * @return mode length in seconds
+     */
+    int getScatterModeLength() const;
 
 private:
     /**
@@ -87,4 +123,14 @@ private:
      * Variable for incrementing ghost speed on level up
      */
     double m_GhostSpeedMultiplier = 1.001;
+
+    /**
+     * Variable for Invincible Mode length
+     */
+    int m_InvincibleModeLength = 10;
+
+    /**
+     * Variable for Scatter Mode length
+     */
+    int m_ScatterModeLength = 7;
 };

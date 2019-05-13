@@ -85,13 +85,13 @@ void GameBoard::spawnCherry() {
 
 void GameBoard::runScatter() {
     /* if (m_TimerGameLength.elapsed() >= 0 && m_TimerGameLength.elapsed() < 7) {
-         runScatterMode(7);
+         runScatterMode(getScatterModeLength());
      } else if (m_TimerGameLength.elapsed() == 27 && m_TimerGameLength.elapsed() < 34) {
-         runScatterMode(7);
+         runScatterMode(getScatterModeLength());
      } else if (m_TimerGameLength.elapsed() == 54 && m_TimerGameLength.elapsed() < 59) {
-         runScatterMode(5);
+         runScatterMode(getScatterModeLength());
      } else if (m_TimerGameLength.elapsed() == 79 && m_TimerGameLength.elapsed() < 84) {
-         runScatterMode(5);
+         runScatterMode(getScatterModeLength());
      }*/
 }
 
