@@ -72,6 +72,25 @@ public:
      */
     int getRemainingTime() const;
 
+    /**
+     * Set new length of mode
+     * @param length length to set
+     */
+    void setLength(int length);
+
+    /**
+     * Get clone of this mode with different length
+     * @param length length for new mode
+     * @return shared ptr to new mode instance
+     */
+    virtual std::shared_ptr<Mode> clone(int length) const = 0;
+
+    /**
+     * Returns inner timer of Mode
+     * @return timer of Mode
+     */
+    Timer<Timer_Type_Second, false> &getTimer();
+
 private:
     /**
      * Variable for storing Mode length
@@ -81,5 +100,5 @@ private:
     /**
      * Timer for tracking Mode elapsed time in seconds
      */
-    Timer<Timer_Type_Second> m_Timer;
+    Timer<Timer_Type_Second, false> m_Timer;
 };

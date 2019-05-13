@@ -37,3 +37,9 @@ Mode::ModeType InvincibleMode::getType() const {
 InvincibleMode::InvincibleMode(int length) : Mode(length) {
 
 }
+
+std::shared_ptr<Mode> InvincibleMode::clone(int length) const {
+    std::shared_ptr<InvincibleMode> mode = std::make_shared<InvincibleMode>(*this);
+    mode->setLength(length);
+    return mode;
+}

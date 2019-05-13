@@ -2,12 +2,18 @@
 
 #include "GameWorld.h"
 #include "../Modes/Mode.h"
+#include "../ModeQueue.h"
 
 /**
  * GameMode class for handling modes
  */
 class GameMode : public GameWorld {
 public:
+    /**
+     * Default constructor, creates mode queue
+     */
+    GameMode();
+
     /**
      * Method for updating next Mode and handling Mode updates
      * @param board GameBoard reference to work with
@@ -22,12 +28,6 @@ public:
     const std::shared_ptr<Mode> &getGameMode() const;
 
     /**
-     * Run scatter mode for certain amount of time
-     * @param time time to run the mode
-     */
-    void runScatterMode(int time);
-
-    /**
      * Run invincible mode for predefined time
      */
     void runInvincibleMode();
@@ -36,7 +36,6 @@ public:
      * Reset mode to default mode (from settings)
      */
     void resetMode();
-
 
     /**
      * Get remaining time of the actual mode
@@ -51,12 +50,16 @@ public:
     bool isInvincible() const;
 
     /**
-     * Check if scatter mode
-     * @return true if so
+     * Changes game Mode to next in the queue
      */
-    bool isScatter() const;
+    void nextMode();
 
 private:
+    /**
+     * ModeQueue for storing modes to come
+     */
+    ModeQueue m_ModeQueue;
+
     /**
      * Variable for storing mode that should change on next update
      */

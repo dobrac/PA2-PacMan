@@ -36,3 +36,9 @@ Mode::ModeType ScatterMode::getType() const {
 
 ScatterMode::ScatterMode(int length) : Mode(length) {
 }
+
+std::shared_ptr<Mode> ScatterMode::clone(int length) const {
+    std::shared_ptr<ScatterMode> mode = std::make_shared<ScatterMode>(*this);
+    mode->setLength(length);
+    return mode;
+}

@@ -37,3 +37,9 @@ Mode::ModeType CrazyMode::getType() const {
 CrazyMode::CrazyMode(int length) : Mode(length) {
 
 }
+
+std::shared_ptr<Mode> CrazyMode::clone(int length) const {
+    std::shared_ptr<CrazyMode> mode = std::make_shared<CrazyMode>(*this);
+    mode->setLength(length);
+    return mode;
+}

@@ -6,24 +6,16 @@ const std::shared_ptr<Mode> &GameMode::getGameMode() const {
     return m_GameMode;
 }
 
-void GameMode::runScatterMode(int time) {
-    if (isScatter())
-        return;
-    m_GameModeToChange = std::make_shared<ScatterMode>(ScatterMode(time));
-}
-
 void GameMode::runInvincibleMode() {
-    if (isInvincible())
-        return;
-    m_GameModeToChange = std::make_shared<InvincibleMode>(InvincibleMode(getInvincibleModeLength()));
+    if (!isInvincible()) {
+        m_GameMode->getTimer().pause();
+        m_ModeQueue.addFront(m_GameMode);
+    }
+    m_GameModeToChange = std::make_shared<InvincibleMode>(InvincibleMode(getInvincibleModeLength() - 1));
 }
 
 bool GameMode::isInvincible() const {
     return m_GameMode->getType() == Mode::MInvincible;
-}
-
-bool GameMode::isScatter() const {
-    return m_GameMode->getType() == Mode::MScatter;
 }
 
 void GameMode::resetMode() {
@@ -43,4 +35,25 @@ bool GameMode::updateGameMode(GameBoard &board) {
     m_GameMode = m_GameModeToChange;
 
     return shouldUpdate;
+}
+
+GameMode::GameMode() {
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode());
+}
+
+void GameMode::nextMode() {
+    if (m_ModeQueue.empty())
+        return;
+
+    m_GameModeToChange = m_ModeQueue.get();
+    m_GameModeToChange->getTimer().resume();
+
+    m_ModeQueue.pop();
 }

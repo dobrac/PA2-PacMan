@@ -40,3 +40,11 @@ int Mode::getRemainingTime() const {
         return -1;
     return (int) (m_Length - m_Timer.elapsed() + 1);
 }
+
+void Mode::setLength(int length) {
+    m_Length = length;
+}
+
+Timer<Timer_Type_Second, false> &Mode::getTimer() {
+    return m_Timer;
+}

@@ -35,19 +35,19 @@ bool GameBoard::checkLoser() const {
 }
 
 bool GameBoard::update() {
-    if (isStarted()) {
-        m_TimerGameLength.resume();
-    } else {
+    if (!isStarted()) {
         m_TimerGameLength.pause();
+        getGameMode()->getTimer().pause();
+    } else {
+        m_TimerGameLength.resume();
+        getGameMode()->getTimer().resume();
     }
 
     if (!isEnded()) {
         if (getGameMode()->shouldEnd())
-            resetMode();
+            nextMode();
 
         spawnCherry();
-
-        runScatter();
 
         return updateGameMode(*this);
     } else {
@@ -81,18 +81,6 @@ void GameBoard::spawnCherry() {
     addScreen(std::make_shared<Cherry>(Cherry(position)));
 
     m_TimerNextCherry.reset();
-}
-
-void GameBoard::runScatter() {
-    /* if (m_TimerGameLength.elapsed() >= 0 && m_TimerGameLength.elapsed() < 7) {
-         runScatterMode(getScatterModeLength());
-     } else if (m_TimerGameLength.elapsed() == 27 && m_TimerGameLength.elapsed() < 34) {
-         runScatterMode(getScatterModeLength());
-     } else if (m_TimerGameLength.elapsed() == 54 && m_TimerGameLength.elapsed() < 59) {
-         runScatterMode(getScatterModeLength());
-     } else if (m_TimerGameLength.elapsed() == 79 && m_TimerGameLength.elapsed() < 84) {
-         runScatterMode(getScatterModeLength());
-     }*/
 }
 
 void GameBoard::addScore(int points) {

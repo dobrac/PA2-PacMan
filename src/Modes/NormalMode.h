@@ -15,4 +15,6 @@ public:
     ModeType getType() const override;
 
     std::string print() const override;
+
+    std::shared_ptr<Mode> clone(int length) const override;
 };

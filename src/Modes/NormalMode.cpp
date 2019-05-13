@@ -37,3 +37,9 @@ Mode::ModeType NormalMode::getType() const {
 NormalMode::NormalMode(int length) : Mode(length) {
 
 }
+
+std::shared_ptr<Mode> NormalMode::clone(int length) const {
+    std::shared_ptr<NormalMode> mode = std::make_shared<NormalMode>(*this);
+    mode->setLength(length);
+    return mode;
+}
