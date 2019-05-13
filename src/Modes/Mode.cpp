@@ -9,8 +9,7 @@ Mode::Mode(int length) : m_Length(length) {
 bool Mode::solveConflictsKill(GameBoard &board) {
     for (auto &ghost : board.getGhosts()) {
         if (ghost->getPos() == board.getPacMan().getPos()) {
-            ghost->setVec({0, 0});
-            ghost->resetPos();
+            ghost->reset();
         }
     }
     return true;
@@ -22,10 +21,9 @@ bool Mode::solveConflictsDeath(GameBoard &board) {
         if (ghost->getPos() == board.getPacMan().getPos()) {
             board.getArrowQueue().clear();
             board.getPacMan().removeLives(1);
-            board.getPacMan().setVec({0, 0});
-            board.getPacMan().resetPos();
+            board.getPacMan().reset();
             for (auto &ghostRes : board.getGhosts()) {
-                ghostRes->resetPos();
+                ghostRes->reset();
             }
             return true;
         }
@@ -40,5 +38,5 @@ bool Mode::shouldEnd() const {
 int Mode::getRemainingTime() const {
     if (m_Length == 0)
         return -1;
-    return (int) m_Length - m_Timer.elapsed() + 1;
+    return (int) (m_Length - m_Timer.elapsed() + 1);
 }

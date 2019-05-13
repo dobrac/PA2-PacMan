@@ -48,3 +48,8 @@ bool Player::checkTimerMove(int speed) {
 const Pos &Player::getDefaultPos() const {
     return m_DefaultPos;
 }
+
+void Player::reset() {
+    setVec({0, 0});
+    resetPos();
+}

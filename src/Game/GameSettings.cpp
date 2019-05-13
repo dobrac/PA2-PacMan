@@ -40,3 +40,9 @@ std::map<std::string, std::shared_ptr<Mode>> GameSettings::getModes() {
 int GameSettings::getCherryProbability() const {
     return m_CherryProbability;
 }
+
+double GameSettings::getGhostSpeedMultiplier() const {
+    return m_GhostSpeedMultiplier;
+}
+
+

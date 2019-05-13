@@ -71,6 +71,11 @@ public:
      */
     bool checkTimerMove(int speed = 0);
 
+    /**
+     * Reset Player position and Vec to {0,0}
+     */
+    void reset();
+
 protected:
     /**
      * Vector for storing direction

@@ -115,11 +115,11 @@ void GameBoard::incrementLevel() {
 
     getArrowQueue().clear();
 
-    getPacMan().setVec({0, 0});
-    getPacMan().resetPos();
+    getPacMan().reset();
 
     for (auto &it : getGhosts()) {
-        it->resetPos();
+        it->reset();
+        it->setSpeed((int) (it->getSpeed() / getGhostSpeedMultiplier()));
     }
 
     resetScreen();

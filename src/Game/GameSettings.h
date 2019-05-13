@@ -61,6 +61,12 @@ public:
      */
     int getCherryProbability() const;
 
+    /**
+     * Get Ghost speed multiplier
+     * @return multiplier
+     */
+    double getGhostSpeedMultiplier() const;
+
 private:
     /**
      * Variable for storing difficulty
@@ -76,4 +82,9 @@ private:
      * Variable for storing Cherry spawn probability
      */
     int m_CherryProbability = 10;
+
+    /**
+     * Variable for incrementing ghost speed on level up
+     */
+    double m_GhostSpeedMultiplier = 1.001;
 };
