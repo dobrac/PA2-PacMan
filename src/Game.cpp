@@ -26,6 +26,9 @@ void Game::showScore() const {
     print(std::to_string((int) getBoard().getGameLength()) + "s");
     printLine();
 
+    print("Score: ");
+    print(std::to_string(getBoard().getScore()));
+    print(" | ");
     print("Points: ");
     print(std::to_string(getBoard().getPoinsGot()));
     print("/");

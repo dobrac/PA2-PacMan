@@ -55,3 +55,13 @@ GameMap::getScreenAt(const std::map<Pos, std::shared_ptr<Entity>> &entities, con
 
     throw ExceptionPosNotFound();
 }
+
+std::vector<std::shared_ptr<Entity>> GameMap::getScreenEmpty() const {
+    std::vector<std::shared_ptr<Entity>> entities;
+    for (auto &it : m_Screen) {
+        if (it->getType() == Entity::EEmpty) {
+            entities.push_back(it);
+        }
+    }
+    return entities;
+}

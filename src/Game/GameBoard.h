@@ -78,6 +78,18 @@ public:
      */
     double getGameLength() const;
 
+    /**
+     * Add players score
+     * @param count points
+     */
+    void addScore(int points);
+
+    /**
+     * Get players score
+     * @return score
+     */
+    int getScore() const;
+
 private:
     /**
      * Maximum points to get
@@ -90,9 +102,24 @@ private:
     int m_PointsGot = 0;
 
     /**
+     * Score gained
+     */
+    int m_Score = 0;
+
+    /**
      * Timer for Game length tracking
      */
     Timer<Timer_Type_Second, false> m_TimerGameLength;
+
+    /**
+     * Static constant for MINIMUM TIME between Cherry spawn
+     */
+    static const int TIME_MIN_CHERRY_SPAWN = 10;
+
+    /**
+     * Timer for tracking if you can spawn next Cherry
+     */
+    Timer<Timer_Type_Second> m_TimerNextCherry;
 };
 
 

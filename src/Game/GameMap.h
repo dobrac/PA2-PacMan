@@ -44,6 +44,12 @@ public:
     const std::vector<std::shared_ptr<Entity>> &getScreen() const;
 
     /**
+     * Get Empty screen Entities
+     * @return vector of Empty screen Entities
+     */
+    std::vector<std::shared_ptr<Entity>> getScreenEmpty() const;
+
+    /**
      * Get entity at specific position
      * @param pos Position to find
      * @return Entity

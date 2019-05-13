@@ -18,6 +18,7 @@ Entity::EntityType Point::getType() const {
 void Point::remove(GameBoard &board) {
     board.addScreen(std::make_shared<Empty>(Empty(getPos())));
     board.addPointsGot(1);
+    board.addScore(10);
     board.removeScreenAt(getPos());
 }
 

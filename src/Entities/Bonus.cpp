@@ -17,6 +17,7 @@ Entity::EntityType Bonus::getType() const {
 void Bonus::remove(GameBoard &board) {
     board.addScreen(std::make_shared<Empty>(Empty(getPos())));
     board.addPointsGot(1);
+    board.addScore(50);
     board.runInvincibleMode();
     board.removeScreenAt(getPos());
 }

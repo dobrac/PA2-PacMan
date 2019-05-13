@@ -55,6 +55,12 @@ public:
      */
     static std::map<std::string, std::shared_ptr<Mode>> getModes();
 
+    /**
+     * Get Cherry spawn probability
+     * @return probability max range
+     */
+    int getCherryProbability() const;
+
 private:
     /**
      * Variable for storing difficulty
@@ -65,4 +71,9 @@ private:
      * Variable for storing mode
      */
     std::shared_ptr<Mode> m_GameMode = std::make_shared<NormalMode>(NormalMode(0));
+
+    /**
+     * Variable for storing Cherry spawn probability
+     */
+    int m_CherryProbability = 10;
 };

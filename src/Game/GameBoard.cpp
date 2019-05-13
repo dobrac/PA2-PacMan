@@ -49,11 +49,6 @@ bool GameBoard::update() {
 
         runScatter();
 
-        /*if (isInvincible())
-            m_TimerGameLengthInner.pause();
-        else
-            m_TimerGameLengthInner.resume();*/
-
         return updateGameMode(*this);
     } else {
         return false;
@@ -65,28 +60,45 @@ double GameBoard::getGameLength() const {
 }
 
 void GameBoard::spawnCherry() {
-    if (((int) getGameLength()) % 60 != 0 || getGameLength() < 10)
+    if (getPoinsGot() < getPointsMax() / 4) // check if has eaten at least 1/4 of the plane
         return;
 
-    int ranX = Random::getInt(0, getX() - 1);
-    int ranY = Random::getInt(0, getY() - 1);
-    Pos ranPos(ranX, ranY);
+    if (m_TimerNextCherry.elapsed() < TIME_MIN_CHERRY_SPAWN)
+        return;
 
-    std::shared_ptr<Entity> entity = getScreenAt(ranPos);
-    if (entity->getType() == Entity::EEmpty) {
-        removeScreenAt(ranPos);
-        addScreen(std::make_shared<Cherry>(Cherry(ranPos)));
-    }
+    int ranNum = Random::getInt(1, getCherryProbability()); // probability of spawning cherry
+    if (ranNum != 1)
+        return;
+
+    std::vector<std::shared_ptr<Entity>> emptyEntities = getScreenEmpty(); // get empty entities
+    if (emptyEntities.empty())
+        return;
+
+    int ranPos = Random::getInt(0, emptyEntities.size() - 1);
+
+    Pos position = emptyEntities[ranPos]->getPos();
+    removeScreenAt(position);
+    addScreen(std::make_shared<Cherry>(Cherry(position)));
+
+    m_TimerNextCherry.reset();
 }
 
 void GameBoard::runScatter() {
-    if (m_TimerGameLength.elapsed() >= 0 && m_TimerGameLength.elapsed() < 7) {
-        runScatterMode(7);
-    } else if (m_TimerGameLength.elapsed() == 27 && m_TimerGameLength.elapsed() < 34) {
-        runScatterMode(7);
-    } else if (m_TimerGameLength.elapsed() == 54 && m_TimerGameLength.elapsed() < 59) {
-        runScatterMode(5);
-    } else if (m_TimerGameLength.elapsed() == 79 && m_TimerGameLength.elapsed() < 84) {
-        runScatterMode(5);
-    }
+    /* if (m_TimerGameLength.elapsed() >= 0 && m_TimerGameLength.elapsed() < 7) {
+         runScatterMode(7);
+     } else if (m_TimerGameLength.elapsed() == 27 && m_TimerGameLength.elapsed() < 34) {
+         runScatterMode(7);
+     } else if (m_TimerGameLength.elapsed() == 54 && m_TimerGameLength.elapsed() < 59) {
+         runScatterMode(5);
+     } else if (m_TimerGameLength.elapsed() == 79 && m_TimerGameLength.elapsed() < 84) {
+         runScatterMode(5);
+     }*/
+}
+
+void GameBoard::addScore(int points) {
+    m_Score += points;
+}
+
+int GameBoard::getScore() const {
+    return m_Score;
 }

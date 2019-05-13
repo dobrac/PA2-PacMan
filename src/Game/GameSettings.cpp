@@ -36,3 +36,7 @@ std::map<std::string, std::shared_ptr<Mode>> GameSettings::getModes() {
                     {"CRAZY",      std::make_shared<CrazyMode>(CrazyMode(0))}
             });
 }
+
+int GameSettings::getCherryProbability() const {
+    return m_CherryProbability;
+}
