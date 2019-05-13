@@ -42,6 +42,19 @@ void Game::showScore() const {
     print(std::to_string(getBoard().getPacMan().getLives()));
     printLine();
 
+    print("Difficulty: ");
+    switch (getBoard().getDefaultDifficulty()) {
+        case GameMap::EASY:
+            print("EASY");
+            break;
+        case GameMap::MEDIUM:
+            print("MEDIUM");
+            break;
+        case GameMap::HARD:
+            print("HARD");
+            break;
+    }
+    print(" | ");
     print("Mode: ");
     print(getBoard().getGameMode()->print());
     if (getBoard().getRemainingTimeMode() != -1) {

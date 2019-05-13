@@ -22,10 +22,24 @@ PacMan &GameWorld::getPacMan() {
 }
 
 void GameWorld::initializeGhosts(const Pos &pos) {
-    addGhost(std::make_shared<GhostYellow>(GhostYellow(pos, 250)));
-    addGhost(std::make_shared<GhostRed>(GhostRed(pos, 300)));
-    addGhost(std::make_shared<GhostBlue>(GhostBlue(pos, 400)));
-    addGhost(std::make_shared<GhostGreen>(GhostGreen(pos, 300)));
+    double defaultMultiplier = 1;
+    switch (getDefaultDifficulty()) {
+        case EASY:
+            defaultMultiplier = 0.8;
+            break;
+        case MEDIUM:
+            defaultMultiplier = 1;
+            break;
+        case HARD:
+            defaultMultiplier = 1.2;
+            break;
+    }
+
+
+    addGhost(std::make_shared<GhostYellow>(GhostYellow(pos, (int) (250 / defaultMultiplier))));
+    addGhost(std::make_shared<GhostRed>(GhostRed(pos, (int) (300 / defaultMultiplier))));
+    addGhost(std::make_shared<GhostBlue>(GhostBlue(pos, (int) (400 / defaultMultiplier))));
+    addGhost(std::make_shared<GhostGreen>(GhostGreen(pos, (int) (300 / defaultMultiplier))));
 }
 
 const PacMan &GameWorld::getPacMan() const {
