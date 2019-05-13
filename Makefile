@@ -14,6 +14,8 @@ SOURCE_DIR ?= src
 BUILD_DIR ?= build
 DOC_DIR ?= doc
 
+PROGRAM_NAME ?= dobryjak
+
 SOURCE_FILES := $(shell find $(SOURCE_DIR) -name "*.cpp")
 #SOURCE_FILES_NAMES := $(shell find $(SOURCE_DIR) -name "*.cpp" | sed -n 's|^$(SOURCE_DIR)/||p')
 
@@ -32,15 +34,15 @@ all: compile
 
 # PŘÍKAZY
 
-## Spuštění `main`
+## Spuštění programu
 .PHONY: run
-run: $(BUILD_DIR)/main
-	$(BUILD_DIR)/main
+run: $(PROGRAM_NAME)
+	./$(PROGRAM_NAME)
 
 ## Spuštění s `valgrind`
 .PHONY: valgrind
-valgrind: $(BUILD_DIR)/main
-	valgrind $(BUILD_DIR)/main
+valgrind: $(PROGRAM_NAME)
+	valgrind ./$(PROGRAM_NAME)
 
 ## Spuštění `doxygen`
 .PHONY: doc
@@ -63,6 +65,7 @@ depend:
 clean:
 	make cleandoc
 	$(RM) -r $(BUILD_DIR)
+	$(RM) $(PROGRAM_NAME)
 
 
 ## Odstranění vygenerované dokumentace
@@ -87,7 +90,7 @@ $(BUILD_DIR):
 
 ## Programy
 compile: $(OBJECT_FILES)
-	$(CXX) $(LDFLAGS) $^ -o $(BUILD_DIR)/main $(LDLIBS) $(CPPLIBS)
+	$(CXX) $(LDFLAGS) $^ -o $(PROGRAM_NAME) $(LDLIBS) $(CPPLIBS)
 
 ## Moduly
 $(BUILD_DIR)/%.o: $(SOURCE_DIR)/%.cpp
