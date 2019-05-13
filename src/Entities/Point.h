@@ -2,6 +2,9 @@
 
 #include "Entity.h"
 
+/**
+ * Class for Point entity handling, overrides methods from Entity
+ */
 class Point : public Entity {
 public:
     explicit Point(const Pos &pos);

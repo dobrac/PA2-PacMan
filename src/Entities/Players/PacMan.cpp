@@ -8,9 +8,9 @@ PacMan::PacMan(const Pos &pos, int speed) : Player(pos) {
     setSpeed(speed);
 }
 
-int PacMan::move(GameBoard &board) {
+bool PacMan::move(GameBoard &board) {
     if (!checkTimerMove()) {
-        return 0;
+        return false;
     }
 
     Pos posVecBack = getVec();
@@ -59,7 +59,16 @@ bool PacMan::setMovePos(GameBoard &board) {
 
     ent->remove(board);
 
-    m_Position = getDirection();
+    setPos(getDirection());
     return true;
 }
 
+int PacMan::getLives() const {
+    return m_Lives;
+}
+
+void PacMan::removeLives(int count) {
+    if (count > m_Lives)
+        count = m_Lives;
+    m_Lives -= count;
+}

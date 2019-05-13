@@ -2,11 +2,16 @@
 
 #include "Mode.h"
 
+/**
+ * Invincible Mode class, overrides methods from Mode
+ */
 class InvincibleMode : public Mode {
 public:
-    InvincibleMode(int length);
+    explicit InvincibleMode(int length);
 
-    bool update(GameBoard & board) override;
+    bool update(GameBoard &board) override;
+
     ModeType getType() const override;
+
     std::string print() const override;
 };

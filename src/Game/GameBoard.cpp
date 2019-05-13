@@ -31,20 +31,14 @@ bool GameBoard::checkWinner() const {
 }
 
 bool GameBoard::checkLoser() const {
-    return m_Lives == 0;
-}
-
-int GameBoard::getLives() const {
-    return m_Lives;
+    return getPacMan().getLives() == 0;
 }
 
 bool GameBoard::update() {
     if (isStarted()) {
         m_TimerGameLength.resume();
-        m_TimerGameLengthInner.resume();
     } else {
         m_TimerGameLength.pause();
-        m_TimerGameLengthInner.pause();
     }
 
     if (!isEnded()) {
@@ -55,21 +49,15 @@ bool GameBoard::update() {
 
         runScatter();
 
-        if (isInvincible())
+        /*if (isInvincible())
             m_TimerGameLengthInner.pause();
         else
-            m_TimerGameLengthInner.resume();
+            m_TimerGameLengthInner.resume();*/
 
         return updateGameMode(*this);
     } else {
         return false;
     }
-}
-
-void GameBoard::removeLives(int count) {
-    if (count > m_Lives)
-        count = m_Lives;
-    m_Lives -= count;
 }
 
 double GameBoard::getGameLength() const {
@@ -92,13 +80,13 @@ void GameBoard::spawnCherry() {
 }
 
 void GameBoard::runScatter() {
-    if (m_TimerGameLengthInner.elapsed() >= 0 && m_TimerGameLengthInner.elapsed() < 7) {
+    if (m_TimerGameLength.elapsed() >= 0 && m_TimerGameLength.elapsed() < 7) {
         runScatterMode(7);
-    } else if (m_TimerGameLengthInner.elapsed() == 27 && m_TimerGameLengthInner.elapsed() < 34) {
+    } else if (m_TimerGameLength.elapsed() == 27 && m_TimerGameLength.elapsed() < 34) {
         runScatterMode(7);
-    } else if (m_TimerGameLengthInner.elapsed() == 54 && m_TimerGameLengthInner.elapsed() < 59) {
+    } else if (m_TimerGameLength.elapsed() == 54 && m_TimerGameLength.elapsed() < 59) {
         runScatterMode(5);
-    } else if (m_TimerGameLengthInner.elapsed() == 79 && m_TimerGameLengthInner.elapsed() < 84) {
+    } else if (m_TimerGameLength.elapsed() == 79 && m_TimerGameLength.elapsed() < 84) {
         runScatterMode(5);
     }
 }

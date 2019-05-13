@@ -103,6 +103,5 @@ void Console::printLine(const std::string &line) {
 
 void Console::clear() {
     std::cout << std::flush;
-    //system("clear");
     std::cout << "\033[2J\033[1;1H";
 }

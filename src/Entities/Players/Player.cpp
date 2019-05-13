@@ -13,7 +13,7 @@ const Pos &Player::getVec() const {
 }
 
 Pos Player::getDirection() const {
-    return m_Position + m_Vec;
+    return getPos() + m_Vec;
 }
 
 Timer<Timer_Type_Millisecond> &Player::getTimer() {

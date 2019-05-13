@@ -2,6 +2,9 @@
 
 #include "Entity.h"
 
+/**
+ * Class for Bonus entity handling, overrides methods from Entity
+ */
 class Bonus : public Entity {
 public:
     explicit Bonus(const Pos &pos);
@@ -11,6 +14,4 @@ public:
     void remove(GameBoard &board) override;
 
     EntityType getType() const override;
-
-private:
 };

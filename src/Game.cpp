@@ -32,7 +32,7 @@ void Game::showScore() const {
     print(std::to_string(getBoard().getPointsMax()));
     print(" | ");
     print("Lives: ");
-    print(std::to_string(getBoard().getLives()));
+    print(std::to_string(getBoard().getPacMan().getLives()));
     printLine();
 
     print("Mode: ");

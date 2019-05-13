@@ -31,3 +31,7 @@ void GameWorld::initializeGhosts(const Pos &pos) {
 const PacMan &GameWorld::getPacMan() const {
     return m_PacMan;
 }
+
+ArrowQueue &GameWorld::getArrowQueue() {
+    return m_ArrowQueue;
+}

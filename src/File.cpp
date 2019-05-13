@@ -4,7 +4,6 @@
 #include "Entities/Empty.h"
 #include "Exceptions/ExceptionWrongMapFormat.h"
 #include "Entities/Bonus.h"
-#include "Exceptions/ExceptionWrongSettingFormat.h"
 #include "Console.h"
 
 #include <string>

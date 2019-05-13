@@ -30,10 +30,6 @@ const std::shared_ptr<Entity> &GameMap::getScreenAt(const Pos &pos) const {
     throw ExceptionPosNotFound();
 }
 
-ArrowQueue &GameMap::getArrowQueue() {
-    return m_ArrowQueue;
-}
-
 void GameMap::removeScreenAt(const Pos &pos) {
     for (auto it = m_Screen.begin(); it != m_Screen.end(); ++it) {
         if ((*it)->getPos() == pos) {

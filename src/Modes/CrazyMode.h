@@ -2,11 +2,16 @@
 
 #include "Mode.h"
 
+/**
+ * Crazy Mode class, overrides methods from Mode
+ */
 class CrazyMode : public Mode {
 public:
-    CrazyMode(int length);
+    explicit CrazyMode(int length);
 
-    bool update(GameBoard & board) override;
+    bool update(GameBoard &board) override;
+
     ModeType getType() const override;
+
     std::string print() const override;
 };

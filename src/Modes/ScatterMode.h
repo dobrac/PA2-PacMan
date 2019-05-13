@@ -2,9 +2,12 @@
 
 #include "Mode.h"
 
+/**
+ * Scatter Mode class, overrides methods from Mode
+ */
 class ScatterMode : public Mode {
 public:
-    ScatterMode(int length);
+    explicit ScatterMode(int length);
 
     bool update(GameBoard &board) override;
 
