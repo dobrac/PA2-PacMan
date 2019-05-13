@@ -42,6 +42,10 @@ G = počáteční pozice duchů
 
 Difficulty: MEDIUM # Possible options: EASY | MEDIUM | HARD
 GameMode: NORMAL # Possible options: NORMAL | INVINCIBLE | CRAZY
+CherryProbability: 10 # Random number between 1 and n inclusive
+InvincibleModeLength: 10 # Duration of Invincible Mode in seconds
+ScatterModeLength: 7 # Duration of Scatter Mode in seconds
+GhostSpeedIncrement: 1.001 # Double multiplication speed number after each level is done
 
 
 ===== Využití polymorfismu: =====
