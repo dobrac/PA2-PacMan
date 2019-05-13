@@ -69,6 +69,9 @@ Console::ARROW Console::getArrow() const {
         case (END):
             printKey(key);
             return END;
+        case (NEXT_LEVEL):
+            printKey(key);
+            return NEXT_LEVEL;
         default:
             printKey(key);
             return ARROW_OTHER;

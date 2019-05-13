@@ -19,7 +19,7 @@ int GameBoard::getPoinsGot() const {
 }
 
 bool GameBoard::isStarted() const {
-    return getPacMan().getVec() != Pos(0, 0) && !isEnded();
+    return !getPacMan().getVec().empty() && !isEnded();
 }
 
 bool GameBoard::isEnded() const {
@@ -101,4 +101,28 @@ void GameBoard::addScore(int points) {
 
 int GameBoard::getScore() const {
     return m_Score;
+}
+
+int GameBoard::getLevel() const {
+    return m_Level;
+}
+
+void GameBoard::incrementLevel() {
+    if (!checkWinner())
+        return;
+
+    m_PointsGot = 0;
+
+    getArrowQueue().clear();
+
+    getPacMan().setVec({0, 0});
+    getPacMan().resetPos();
+
+    for (auto &it : getGhosts()) {
+        it->resetPos();
+    }
+
+    resetScreen();
+
+    m_Level++;
 }

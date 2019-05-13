@@ -29,3 +29,7 @@ bool ArrowQueue::empty() const {
 const Pos &ArrowQueue::get() const {
     return m_Queue.front();
 }
+
+void ArrowQueue::clear() {
+    m_Queue.clear();
+}

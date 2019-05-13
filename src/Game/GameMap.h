@@ -77,6 +77,16 @@ public:
     static const std::shared_ptr<Entity> &
     getScreenAt(const std::map<Pos, std::shared_ptr<Entity>> &entities, const Pos &pos);
 
+    /**
+     * Saves loaded screen to default value for resetting
+     */
+    void saveDefaultScreen();
+
+    /**
+     * Resets screen to default state
+     */
+    void resetScreen();
+
 
 private:
     /**
@@ -93,4 +103,9 @@ private:
      * Vector for storing all screen entities
      */
     std::vector<std::shared_ptr<Entity>> m_Screen;
+
+    /**
+     * Vector for storing default screen Entities
+     */
+    std::vector<std::shared_ptr<Entity>> m_DefaultScreen;
 };

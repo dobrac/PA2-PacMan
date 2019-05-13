@@ -36,6 +36,11 @@ public:
      */
     bool empty() const;
 
+    /**
+     * Clears ArrowQueue
+     */
+    void clear();
+
 private:
     /**
      * List for storing queue Pos

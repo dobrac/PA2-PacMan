@@ -69,6 +69,9 @@ GameBoard File::loadBoard(const std::string &mapName) {
     } else {
         throw ExceptionWrongMapFormat();
     }
+
+    board.saveDefaultScreen();
+
     return board;
 }
 

@@ -16,6 +16,7 @@ public:
         UP = -65,
         DOWN = -66,
         END = 101, // e
+        NEXT_LEVEL = 110, // n
         ARROW_OTHER = 0
     };
 

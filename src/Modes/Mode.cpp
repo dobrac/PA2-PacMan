@@ -20,6 +20,7 @@ bool Mode::solveConflictsKill(GameBoard &board) {
 bool Mode::solveConflictsDeath(GameBoard &board) {
     for (auto &ghost : board.getGhosts()) {
         if (ghost->getPos() == board.getPacMan().getPos()) {
+            board.getArrowQueue().clear();
             board.getPacMan().removeLives(1);
             board.getPacMan().setVec({0, 0});
             board.getPacMan().resetPos();

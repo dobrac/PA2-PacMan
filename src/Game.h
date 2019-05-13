@@ -97,7 +97,7 @@ private:
 
     /**
      * Start Game, loads map, settings and runs Game loop
-     * @param mapName
+     * @param mapName name of the map
      */
     void startGame(const std::string &mapName);
 

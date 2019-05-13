@@ -29,6 +29,10 @@ void Game::showScore() const {
     print("Score: ");
     print(std::to_string(getBoard().getScore()));
     print(" | ");
+    print("Level: ");
+    print(std::to_string(getBoard().getLevel()));
+    printLine();
+
     print("Points: ");
     print(std::to_string(getBoard().getPoinsGot()));
     print("/");
@@ -58,7 +62,7 @@ void Game::showScore() const {
 bool Game::checkEnd() const {
     // Check winner
     if (getBoard().checkWinner()) {
-        printLine("Winner! Game ended. (Press 'e' to exit.)");
+        printLine("Winner! Game ended. (Press 'n' to next level or 'e' to exit)");
         return true;
     }
 
@@ -145,6 +149,10 @@ bool Game::runGameLoop() {
             break;
         case DOWN:
             getBoard().getArrowQueue().add(Pos(0, 1));
+            break;
+        case NEXT_LEVEL:
+            getBoard().incrementLevel();
+            m_ShouldUpdate = true;
             break;
         case END:
             endGame();

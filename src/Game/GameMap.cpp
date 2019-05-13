@@ -65,3 +65,11 @@ std::vector<std::shared_ptr<Entity>> GameMap::getScreenEmpty() const {
     }
     return entities;
 }
+
+void GameMap::saveDefaultScreen() {
+    m_DefaultScreen = m_Screen;
+}
+
+void GameMap::resetScreen() {
+    m_Screen = m_DefaultScreen;
+}

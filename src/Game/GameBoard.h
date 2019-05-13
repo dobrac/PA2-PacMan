@@ -90,6 +90,17 @@ public:
      */
     int getScore() const;
 
+    /**
+     * Increments level
+     */
+    void incrementLevel();
+
+    /**
+     * Get game level
+     * @return actual game level
+     */
+    int getLevel() const;
+
 private:
     /**
      * Maximum points to get
@@ -105,6 +116,11 @@ private:
      * Score gained
      */
     int m_Score = 0;
+
+    /**
+     * Game level
+     */
+    int m_Level = 1;
 
     /**
      * Timer for Game length tracking
