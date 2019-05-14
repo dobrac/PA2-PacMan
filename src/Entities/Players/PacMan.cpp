@@ -68,7 +68,17 @@ int PacMan::getLives() const {
 }
 
 void PacMan::removeLives(int count) {
+    if (count < 0)
+        return;
+
     if (count > m_Lives)
         count = m_Lives;
     m_Lives -= count;
+}
+
+void PacMan::addLives(int count) {
+    if (count < 0)
+        return;
+
+    m_Lives += count;
 }

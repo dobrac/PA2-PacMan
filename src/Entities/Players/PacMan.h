@@ -39,6 +39,12 @@ public:
      */
     void removeLives(int count);
 
+    /**
+     * Add lives to PacMan
+     * @param count lives to add
+     */
+    void addLives(int count);
+
 private:
     /**
      * Variable with lives

@@ -50,6 +50,11 @@ void GameMode::nextMode() {
 void GameMode::setupModes() {
     m_ModeQueue.clear();
 
+    if (getDefaultMode()->getType() == Mode::MInvincible) {
+        m_ModeQueue.add(getDefaultMode());
+        return;
+    }
+
     m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
     m_ModeQueue.add(getDefaultMode()->clone(20));
     m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));

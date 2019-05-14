@@ -63,11 +63,6 @@ public:
     bool checkLoser() const;
 
     /**
-     * Run scatter mode
-     */
-    void runScatter();
-
-    /**
      * Spawn Cherry in the plane
      */
     void spawnCherry();
@@ -135,7 +130,7 @@ private:
     /**
      * Static constant for MINIMUM TIME between Cherry spawn
      */
-    static const int TIME_MIN_CHERRY_SPAWN = 10;
+    static const int TIME_MIN_CHERRY_SPAWN = 30;
 
     /**
      * Timer for tracking if you can spawn next Cherry

@@ -17,6 +17,7 @@ Entity::EntityType Cherry::getType() const {
 void Cherry::remove(GameBoard &board) {
     board.addScreen(std::make_shared<Empty>(Empty(getPos())));
     board.addScore(100);
+    board.getPacMan().addLives(1);
     board.removeScreenAt(getPos());
 }
 
