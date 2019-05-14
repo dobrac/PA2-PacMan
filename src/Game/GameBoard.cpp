@@ -118,3 +118,8 @@ void GameBoard::incrementLevel() {
 
     m_Level++;
 }
+
+void GameBoard::loadingDone() {
+    saveDefaultScreen();
+    setupModes();
+}

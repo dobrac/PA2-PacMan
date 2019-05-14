@@ -88,8 +88,7 @@ bool Game::checkEnd() const {
     return false;
 }
 
-
-void Game::showScreen() const {
+std::vector<std::vector<std::string>> Game::getScreen() const {
     const int mapX = getBoard().getX();
     const int mapY = getBoard().getY();
 
@@ -116,6 +115,11 @@ void Game::showScreen() const {
     screen[getBoard().getPacMan().getPos().getX()][getBoard().getPacMan().getPos().getY()]
             = getBoard().getPacMan().print(getBoard());
 
+    return screen;
+}
+
+
+void Game::showScreen(const std::vector<std::vector<std::string>> &screen) const {
     // Print Board
     for (int y = 0; y < getBoard().getY(); y++) {
         for (int x = 0; x < getBoard().getX(); x++) {
@@ -128,6 +132,9 @@ void Game::showScreen() const {
 
 void Game::showGame() {
     if (m_ShouldUpdate) {
+        // Generate screen, can take longer time
+        std::vector<std::vector<std::string>> screen = getScreen();
+
         // Clear console
         clear();
 
@@ -135,7 +142,7 @@ void Game::showGame() {
         showScore();
 
         // Print Board
-        showScreen();
+        showScreen(screen);
 
         m_ShouldUpdate = false;
 

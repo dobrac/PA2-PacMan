@@ -63,9 +63,16 @@ private:
     void showGame();
 
     /**
-     * Show Game plane
+     * Generate 2D array of entities and players
+     * @return Screen 2D array
      */
-    void showScreen() const;
+    std::vector<std::vector<std::string>> getScreen() const;
+
+    /**
+     * Show Game plane
+     * @param screen Show screen passed in the argument
+     */
+    void showScreen(const std::vector<std::vector<std::string>> &screen) const;
 
     /**
      * Show Game score

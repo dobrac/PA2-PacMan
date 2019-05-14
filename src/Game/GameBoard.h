@@ -101,6 +101,11 @@ public:
      */
     int getLevel() const;
 
+    /**
+     * Method to call for loading settings and map done
+     */
+    void loadingDone();
+
 private:
     /**
      * Maximum points to get

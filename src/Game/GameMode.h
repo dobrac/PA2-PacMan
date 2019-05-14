@@ -10,11 +10,6 @@
 class GameMode : public GameWorld {
 public:
     /**
-     * Default constructor, creates mode queue
-     */
-    GameMode();
-
-    /**
      * Method for setting up and creating required modes
      */
     void setupModes();

@@ -70,7 +70,7 @@ GameBoard File::loadBoard(const std::string &mapName) {
         throw ExceptionWrongMapFormat();
     }
 
-    board.saveDefaultScreen();
+    board.loadingDone();
 
     return board;
 }

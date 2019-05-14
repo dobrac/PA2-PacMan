@@ -37,10 +37,6 @@ bool GameMode::updateGameMode(GameBoard &board) {
     return shouldUpdate;
 }
 
-GameMode::GameMode() {
-    setupModes();
-}
-
 void GameMode::nextMode() {
     if (m_ModeQueue.empty())
         return;
