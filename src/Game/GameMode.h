@@ -15,6 +15,11 @@ public:
     GameMode();
 
     /**
+     * Method for setting up and creating required modes
+     */
+    void setupModes();
+
+    /**
      * Method for updating next Mode and handling Mode updates
      * @param board GameBoard reference to work with
      * @return true if screen should update

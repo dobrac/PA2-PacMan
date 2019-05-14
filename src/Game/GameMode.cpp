@@ -38,14 +38,7 @@ bool GameMode::updateGameMode(GameBoard &board) {
 }
 
 GameMode::GameMode() {
-    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
-    m_ModeQueue.add(getDefaultMode()->clone(20));
-    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
-    m_ModeQueue.add(getDefaultMode()->clone(20));
-    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
-    m_ModeQueue.add(getDefaultMode()->clone(20));
-    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
-    m_ModeQueue.add(getDefaultMode());
+    setupModes();
 }
 
 void GameMode::nextMode() {
@@ -56,4 +49,17 @@ void GameMode::nextMode() {
     m_GameModeToChange->getTimer().resume();
 
     m_ModeQueue.pop();
+}
+
+void GameMode::setupModes() {
+    m_ModeQueue.clear();
+
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode()->clone(20));
+    m_ModeQueue.add(std::make_shared<ScatterMode>(ScatterMode(getScatterModeLength())));
+    m_ModeQueue.add(getDefaultMode());
 }

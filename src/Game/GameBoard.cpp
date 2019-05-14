@@ -112,5 +112,9 @@ void GameBoard::incrementLevel() {
 
     resetScreen();
 
+    setupModes();
+
+    nextMode();
+
     m_Level++;
 }
