@@ -75,7 +75,7 @@ GameBoard File::loadBoard(const std::string &mapName) {
     return board;
 }
 
-bool File::integrityCheck(GameMap &map) {
+bool File::integrityCheck(GameWorld &map) {
     for (auto &ent : map.getScreen()) {
         if (ent->getPos().getX() == 0)
             if (ent->getType() != Entity::EBorder)
@@ -85,14 +85,17 @@ bool File::integrityCheck(GameMap &map) {
             if (ent->getType() != Entity::EBorder)
                 return false;
 
-        if (ent->getPos().getX() == map.getX())
+        if (ent->getPos().getX() == map.getX() - 1)
             if (ent->getType() != Entity::EBorder)
                 return false;
 
-        if (ent->getPos().getY() == map.getY())
+        if (ent->getPos().getY() == map.getY() - 1)
             if (ent->getType() != Entity::EBorder)
                 return false;
     }
+
+    if (map.getPacMan().getPos() == Pos(0, 0))
+        return false;
 
     return true;
 }

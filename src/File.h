@@ -38,8 +38,8 @@ private:
 
     /**
      * Check if map meets certain requirements (ends with border on each side)
-     * @param map GameMap object for check
+     * @param map GameWorld object for check
      * @return true if all checks has passed
      */
-    static bool integrityCheck(GameMap &map);
+    static bool integrityCheck(GameWorld &map);
 };

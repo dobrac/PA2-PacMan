@@ -221,19 +221,27 @@ void Game::startGame(const std::string &mapName) {
         return;
     }
 
-    Timer<Timer_Type_Millisecond> tps;
-    int count = 0;
+    // TPS counter
+    Timer<Timer_Type_Millisecond> tpsTimer;
+    int tpsCount = 0;
+
+    // Lag solver
+    Timer<Timer_Type_Millisecond> gameLagSolver;
     while (runGameLoop()) {
+        gameLagSolver.reset();
+
         showGame();
 
-        if (tps.elapsed() >= 1000) {
-            m_TPS = count;
-            tps.reset();
-            count = 0;
+        if (tpsTimer.elapsed() >= 1000) {
+            m_TPS = tpsCount;
+            tpsTimer.reset();
+            tpsCount = 0;
         }
-        count++;
+        tpsCount++;
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        int diff = 50 - (int) gameLagSolver.elapsed();
+        if (diff > 0)
+            std::this_thread::sleep_for(std::chrono::milliseconds(diff));
     }
 }
 
